@@ -28,14 +28,15 @@
 
             @if (count($subusers) < 6)
                 <div class="flex justify-end mb-4">
-                <flux:button wire:click="addInput" class="w-12">追加</flux:button>
-</div>
-@endif
+                    <flux:button wire:click="addInput" class="w-12">追加</flux:button>
+                </div>
+            @endif
 
-{{-- submit button --}}
-<flux:button type="submit" class="mx-auto w-48 text-lg font-semibold" variant="primary" color="yellow">
-    このメンバーで始める
-</flux:button>
-</flux:field>
-</from>
+
+            {{-- submit button --}}
+            <flux:button type="submit" class="mx-auto w-48 text-lg font-semibold" variant="primary" color="yellow">
+                このメンバーで始める
+            </flux:button>
+        </flux:field>
+    </from>
 </div>
