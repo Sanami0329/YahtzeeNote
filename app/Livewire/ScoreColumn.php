@@ -20,6 +20,7 @@ class ScoreColumn extends Component
     public ?int $fours = null;
     public ?int $fives = null;
     public ?int $sixes = null;
+    public array $upperScores = ['ones', 'twos', 'threes', 'fours', 'fives', 'sixes'];
 
     // Lower Scores
     public ?int $threeKind = null;
@@ -29,6 +30,7 @@ class ScoreColumn extends Component
     public ?int $largeStraight = null;
     public ?int $yahtzee = null;
     public ?int $chance = null;
+    public array $lowerScores = ['threeKind', 'fourKind', 'fullHouse', 'smallStraight', 'largeStraight', 'yahtzee', 'chance'];
 
     public int $yahtzeeBonus = 0;
     public array $yahtzeeBonusItems = [false, false, false, false, false]; //yahtzeeBonusのcheckbox
@@ -36,26 +38,29 @@ class ScoreColumn extends Component
     public array $scoreItems = [];
 
     public array $scoreConfig = [
-        'ones'   => ['min' => 0, 'max' => 5, 'step' => 1],
-        'twos'  => ['min' => 0, 'max' => 10, 'step' => 2],
-        'threes' => ['min' => 0, 'max' => 15, 'step' => 3],
-        'fours' => ['min' => 0, 'max' => 20, 'step' => 4],
-        'fives' => ['min' => 0, 'max' => 25, 'step' => 5],
-        'sixes' => ['min' => 0, 'max' => 30, 'step' => 6],
-        'threeKind' => ['min' => 0, 'max' => 30, 'step' => 1],
-        'fourKind'  => ['min' => 0, 'max' => 30, 'step' => 1],
-        'fullHouse' => ['min' => 0, 'max' => 25, 'in:0,25', 'step' => 25],
-        'smallStraight' => ['min' => 0, 'max' => 30, 'in:0,30', 'step' => 30],
-        'largeStraight' => ['min' => 0, 'max' => 40, 'in:0,40', 'step' => 40],
-        'yahtzee' => ['min' => 0, 'max' => 50, 'in:0,50', 'step' => 50],
-        'chance'  => ['min' => 0, 'max' => 30, 'step' => 1],
+        'ones'   => ['label' => 'Ones', 'min' => 0, 'max' => 5, 'step' => 1],
+        'twos'  => ['label' => 'Twos', 'min' => 0, 'max' => 10, 'step' => 2],
+        'threes' => ['label' => 'Threes', 'min' => 0, 'max' => 15, 'step' => 3],
+        'fours' => ['label' => 'Fours', 'min' => 0, 'max' => 20, 'step' => 4],
+        'fives' => ['label' => 'Fives', 'min' => 0, 'max' => 25, 'step' => 5],
+        'sixes' => ['label' => 'Sixes', 'min' => 0, 'max' => 30, 'step' => 6],
+        'threeKind' => ['label' => 'Three of a Kind', 'min' => 0, 'max' => 30, 'step' => 1],
+        'fourKind'  => ['label' => 'Four of a Kind', 'min' => 0, 'max' => 30, 'step' => 1],
+        'fullHouse' => ['label' => 'Full House', 'min' => 0, 'max' => 25, 'in' => [0,25], 'step' => 25],
+        'smallStraight' => ['label' => 'Small Straight', 'min' => 0, 'max' => 30, 'in' => [0,30], 'step' => 30],
+        'largeStraight' => ['label' => 'Large Straight', 'min' => 0, 'max' => 40, 'in' => [0,40], 'step' => 40],
+        'yahtzee' => ['label' => "Yahtzee", 'min' => 0, 'max' => 50, 'in' => [0,50], 'step' => 50],
+        'chance'  => ['label' => 'Chance', 'min' => 0, 'max' => 30, 'step' => 1],
+        'yahtzeeBonus' => ['label' => 'Yahtzee Bonus', 'min' => 0, 'max' => 500, 'step' => 100],
     ];
 
     // playerのscoreが全部入力されているか確認した結果が入る変数
     public bool $isComplete = false;
 
 
-
+    /*
+    以下メソッド
+    */
     public function mount(int $playId, int $playerId, string $playerName)
     {
         // playIdがセッションに存在しない場合はリダイレクト
@@ -67,52 +72,37 @@ class ScoreColumn extends Component
         $this->playerId = $playerId;
         $this->playerName = $playerName;
 
-        $this->scoreItems = [
-            'ones',
-            'twos',
-            'threes',
-            'fours',
-            'fives',
-            'sixes',
-            'threeKind',
-            'fourKind',
-            'fullHouse',
-            'smallStraight',
-            'largeStraight',
-            'yahtzee',
-            'chance',
-        ];
+        $this->scoreItems = array_merge($this->upperScores, $this->lowerScores);
     }
 
-    // increment button clac
-    public function increment($field)
-    {
-        $config = $this->scoreConfig[$field];
-
-        $currentValue = $this->$field ?? 0;
-
-        if ($field === 'threeKind' || $field === 'fourKind' || $field === 'chance') {
-            if ($currentValue < $config['max']) {
-                $this->$field = min($currentValue + $config['step'] * 5, $config['max']);
-            }
-        } else {
-            if ($currentValue < $config['max']) {
-                $this->$field = min($currentValue + $config['step'], $config['max']);
-            }
-        }
-    }
 
     // decrement button calc
     public function decrement($field)
     {
-        $config = $this->scoreConfig[$field];
-
         $currentValue = $this->$field;
 
         if ($currentValue === null) {
             $this->$field = 0;
         } elseif ($currentValue > 0) {
-            $this->$field = max(0, $currentValue - $config['step']);
+            $this->$field = max(0, $currentValue - $this->scoreConfig[$field]['step']);
+        }
+    }
+
+    // increment button clac
+    public function increment($field)
+    {
+        $currentValue = $this->$field ?? 0;
+        $max = $this->scoreConfig[$field]['max'];
+        $step = $this->scoreConfig[$field]['step'];
+
+        if ($field === 'threeKind' || $field === 'fourKind' || $field === 'chance') {
+            if ($currentValue < $max) {
+                $this->$field = min($currentValue + $step * 5, $max);
+            }
+        } else {
+            if ($currentValue < $max) {
+                $this->$field = min($currentValue + $step, $max);
+            }
         }
     }
 
@@ -123,12 +113,12 @@ class ScoreColumn extends Component
     // upperscore total
     public function getUpperScore()
     {
-        return ($this->ones ?? 0) +
-            ($this->twos ?? 0) +
-            ($this->threes ?? 0) +
-            ($this->fours ?? 0) +
-            ($this->fives ?? 0) +
-            ($this->sixes ?? 0);
+        $total = 0;
+
+        foreach($this->upperScores as $field) {
+            $total += $this->$field ?? 0;
+        }
+        return $total;
     }
 
     // bonus calc
@@ -153,14 +143,11 @@ class ScoreColumn extends Component
     //lower total
     public function getLowerTotal()
     {
-        return ($this->threeKind ?? 0) +
-            ($this->fourKind ?? 0) +
-            ($this->fullHouse ?? 0) +
-            ($this->smallStraight ?? 0) +
-            ($this->largeStraight ?? 0) +
-            ($this->yahtzee ?? 0) +
-            ($this->chance ?? 0) +
-            $this->yahtzeeBonus;
+        $total = 0;
+        foreach($this->lowerScores as $field) {
+            $total += $this->$field ?? 0;
+        }
+        return $total + $this->getYahtzeeBonus();
     }
 
     // grand total
@@ -171,80 +158,79 @@ class ScoreColumn extends Component
 
 
     /*
-    全playerが全fieldにscoreを入れたか確認
+    Validation
     */
 
-    // 1.scoreの全itemがnullじゃないか確認
-    private function checkAllFilled(): bool
-    {
-        foreach ($this->scoreItems as $scoreItem) {
-            if ($this->$scoreItem === null) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    // 2.親のPlayGameのscoreStatusUpdateにplayerIdとcompleteStatusを送る
-    public function dispatchStatus()
-    {
-        $this->isComplete = $this->checkAllFilled();
-
-        $this->dispatch('score-status-update', $this->playerId, $this->isComplete);
-    }
-
-    protected $listeners = [
-        'request-status' => 'dispatchStatus',
-        'save-player-score' => 'save',
-    ];
-
-
-    /*
-    バリデーションルール
-    */
     protected function rules()
     {
         // nullble, 半角数字, 整数, min, max
         return collect($this->scoreConfig)
             ->mapWithKeys(fn ($config, $configField) => [
-                $configField => [
-                    'nullable',
-                    'regex:/^\d+$/',
+                $configField => array_filter([
+                    'required',
                     'integer',
                     'min:' . $config['min'],
                     'max:' . $config['max'],
-                    // $this->stepRule($config['step']),
-                ],
+                    // issetでconfigにinがあるか確認し(bool)、あればinルールを追加、なければnullを返す
+                    isset($config['in']) ? 'in:' . implode(',', $config['in']) : null,
+                ]),
             ])->toArray();
     }
 
-    public function save()
+    protected function messages()
     {
-        // スコア全体をバリデーション
-        try {
-            $this->validate();
-        } catch (ValidationException $e) {
-            // バリデーションエラーがあれば表示
-            $this->dispatch('show-validation-error', errors: $e->errors());
-            return;
+        $messages = [];
+
+        foreach ($this->scoreConfig as $field => $config) {
+            $messages["{$field}.required"] = "全プレーヤーのスコアを入力してください";
+            $messages["{$field}.integer"] = "スコアは整数で入力してください";
+            $messages["{$field}.min"] = "{$config['label']}には{$config['min']}～{$config['max']}までの数字を入力してください";
+            $messages["{$field}.max"] = "{$config['label']}には{$config['min']}～{$config['max']}までの数字を入力してください";
+
+            if (isset($config['in'])) {
+                $inValues = implode('または', $config['in']);
+                $messages["{$field}.in"] = "{$config['label']}には{$inValues}のみ入力可能です";
+            }
         }
 
+        return $messages;
+    }
+
+    // リスナーでrequest-validationを受け取って、このplayerのスコアのバリデーション実行
+    public function validateScores()
+    {
+        try {
+            $this->validate();
+            $this->dispatch('send-validation-result', $this->playerId, null);
+        } catch (ValidationException $e) {
+            // バリデーションエラーがあれば、エラーメッセージも含め親のplaygameへdispatch
+            $this->dispatch('send-validation-result', $this->playerId, $e->validator->errors()->first());
+        }
+    }
+
+    protected $listeners = [
+        'request-validation' => 'validateScores',
+        'save-player-score' => 'save',
+    ];
+
+    public function save()
+    {
         Score::create([
             'play_id' => $this->playId,
             'player_id' => $this->playerId,
-            'ones' => $this->ones ?? 0,
-            'twos' => $this->twos ?? 0,
-            'threes' => $this->threes ?? 0,
-            'fours' => $this->fours ?? 0,
-            'fives' => $this->fives ?? 0,
-            'sixes' => $this->sixes ?? 0,
-            'three_kind' => $this->threeKind ?? 0,
-            'four_kind' => $this->fourKind ?? 0,
-            'full_house' => $this->fullHouse ?? 0,
-            'small_straight' => $this->smallStraight ?? 0,
-            'large_straight' => $this->largeStraight ?? 0,
-            'yahtzee' => $this->yahtzee ?? 0,
-            'chance' => $this->chance ?? 0,
+            'ones' => $this->ones,
+            'twos' => $this->twos,
+            'threes' => $this->threes,
+            'fours' => $this->fours,
+            'fives' => $this->fives,
+            'sixes' => $this->sixes,
+            'three_kind' => $this->threeKind,
+            'four_kind' => $this->fourKind,
+            'full_house' => $this->fullHouse,
+            'small_straight' => $this->smallStraight,
+            'large_straight' => $this->largeStraight,
+            'yahtzee' => $this->yahtzee,
+            'chance' => $this->chance,
             'yahtzee_bonus' => $this->yahtzeeBonus,
         ]);
     }

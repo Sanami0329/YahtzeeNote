@@ -15,7 +15,7 @@ class PreparePlay extends Component
         $subusers = session('subusers_data');
 
         if (!$subusers) {
-            return redirect()->route('input');
+            return redirect()->route('play.create');
         }
 
         // 新しいplayを発行

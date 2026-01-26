@@ -1,44 +1,36 @@
 <div>
     {{-- Score Table --}}
-    <table class="w-36 font-medium text-gray-800 border-collapse border-1 border-gray-600">
+    <table class="w-36 border-collapse border-1 border-gray-600 font-medium text-gray-800">
         {{-- Column Headers --}}
         <thead>
             <tr class="h-10 bg-white">
-                <th class="border border-gray-600 text-center w-60">{{ $playerName }}</th>
+                <th class="w-60 border border-gray-600 text-center">{{ $playerName }}</th>
             </tr>
         </thead>
 
         <tbody>
             {{-- Upper Section --}}
-            @foreach([
-            ['field' => 'ones'],
-            ['field' => 'twos'],
-            ['field' => 'threes'],
-            ['field' => 'fours'],
-            ['field' => 'fives'],
-            ['field' => 'sixes'],
-            ] as $row)
+            @foreach($this->upperScores as $field)
             <tr class="h-10 bg-red-100">
                 <td class="border border-gray-600">
                     <div class="flex items-center justify-center gap-2 px-3">
                         <flux:button
                             size="xs"
-                            wire:click="decrement('{{ $row['field'] }}')"
+                            wire:click="decrement('{{ $field }}')"
                             class="bg-gray-200! text-gray-600!">
                             -
                         </flux:button>
                         <flux:input
                             type="number"
                             size="xs"
-                            wire:model.lazy="{{ $row['field'] }}"
+                            wire:model.lazy="{{ $field }}"
                             class="w-16 bg-white border-1 border-gray-600"
-                            style="text-align: center; color: var(--color-gray-600); appearance: textfield;" />
-                        @error($row['field'])
-                            <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
-                        @enderror
+                            style="text-align: center; color: var(--color-gray-600); appearance: textfield;"
+                            max="{{ $this->scoreConfig[$field]['max'] }}"
+                            min="0" />
                         <flux:button
                             size="xs"
-                            wire:click="increment('{{ $row['field'] }}')"
+                            wire:click="increment('{{ $field }}')"
                             class="bg-gray-200! text-gray-600!">
                             +
                         </flux:button>
@@ -48,43 +40,38 @@
             @endforeach
 
             {{-- Upper Totals --}}
-            <tr class="h-10 bg-red-200">
-                <td class="border border-gray-600 text-center px-3">{{ $this->getUpperScore() }}</td>
-            </tr>
-            <tr class="h-10 bg-red-200">
-                <td class="border border-gray-600 text-center px-3">{{ $this->getBonus() }}</td>
-            </tr>
-            <tr class="h-10 bg-red-200">
-                <td class="border border-gray-600 text-center px-3">{{ $this->getUpperTotal() }}</td>
-            </tr>
+            @foreach ([
+                ['name' => 'UPPER SCORE', 'method' => 'getUpperScore'],
+                ['name' => 'BONUS', 'method' => 'getBonus'],
+                ['name' => 'UPPER TOTAL', 'method' => 'getUpperTotal'],
+            ] as $item)
+                <tr class="h-10 bg-red-200">
+                    <td class="border border-gray-600 px-3 text-center">{{ $this->{$item['method']}() }}</td>
+                </tr>
+            @endforeach
 
             {{-- Lower Section --}}
-            {{-- 3/4 of a kind --}}
-            @foreach([
-            ['field' => 'threeKind'],
-            ['field' => 'fourKind'],
-            ] as $row)
+            @foreach($this->lowerScores as $field)
             <tr class="h-10 bg-blue-100">
                 <td class="border border-gray-600">
                     <div class="flex items-center justify-center gap-2 px-3">
                         <flux:button
                             size="xs"
-                            wire:click="decrement('{{ $row['field'] }}')"
+                            wire:click="decrement('{{ $field }}')"
                             class="bg-gray-200! text-gray-600!">
                             -
                         </flux:button>
                         <flux:input
                             type="number"
                             size="xs"
-                            wire:model.lazy="{{ $row['field'] }}"
+                            wire:model.lazy="{{ $field }}"
                             class="w-16 bg-white border-1 border-gray-600"
-                            style="text-align: center; color: var(--color-gray-600); appearance: textfield;" />
-                        @error($row['field'])
-                            <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
-                        @enderror
+                            style="text-align: center; color: var(--color-gray-600); appearance: textfield;"
+                            max="{{ $this->scoreConfig[$field]['max'] }}"
+                            min="0" />
                         <flux:button
                             size="xs"
-                            wire:click="increment('{{ $row['field'] }}')"
+                            wire:click="increment('{{ $field }}')"
                             class="bg-gray-200! text-gray-600!">
                             +
                         </flux:button>
@@ -92,73 +79,11 @@
                 </td>
             </tr>
             @endforeach
-
-            {{-- others --}}
-            @foreach([
-            ['field' => 'fullHouse'],
-            ['field' => 'smallStraight'],
-            ['field' => 'largeStraight'],
-            ['field' => 'yahtzee'],
-            ] as $row)
-            <tr class="h-10 bg-blue-100">
-                <td class="border border-gray-600">
-                    <div class="flex items-center justify-center gap-2 px-3">
-                        <flux:button
-                            size="xs"
-                            wire:click="decrement('{{ $row['field'] }}')"
-                            class="bg-gray-200! text-gray-600!">
-                            -
-                        </flux:button>
-                        <flux:input
-                            type="number"
-                            size="xs"
-                            wire:model.lazy="{{ $row['field'] }}"
-                            class="w-16 bg-white border-1 border-gray-600"
-                            style="text-align: center; color: var(--color-gray-600); appearance: textfield;" />
-                        <flux:button
-                            size="xs"
-                            wire:click="increment('{{ $row['field'] }}')"
-                            class="bg-gray-200! text-gray-600!">
-                            +
-                        </flux:button>
-                    </div>
-                </td>
-            </tr>
-            @endforeach
-
-            {{-- chance --}}
-            @php
-                $row = ['field' => 'chance'];
-            @endphp
-            <tr class="h-10 bg-blue-100">
-                <td class="border border-gray-600">
-                    <div class="flex items-center justify-center gap-2 px-3">
-                        <flux:button
-                            size="xs"
-                            wire:click="decrement('{{ $row['field'] }}')"
-                            class="bg-gray-200! text-gray-600!">
-                            -
-                        </flux:button>
-                        <flux:input
-                            type="number"
-                            size="xs"
-                            wire:model.lazy="{{ $row['field'] }}"
-                            class="w-16 bg-white border-1 border-gray-600"
-                            style="text-align: center; color: var(--color-gray-600); appearance: textfield;" />
-                        <flux:button
-                            size="xs"
-                            wire:click="increment('{{ $row['field'] }}')"
-                            class="bg-gray-200! text-gray-600!">
-                            +
-                        </flux:button>
-                    </div>
-                </td>
-            </tr>
 
             {{-- Yahtzee Bonus --}}
             <tr class="h-16 bg-blue-100">
                 <td class="border border-gray-600">
-                    <div class="flex flex-col items-center gap-2 px-3">
+                    <div class="flex flex-col items-center px-3 gap-2">
                         <div class="flex gap-2">
                             @for($i = 0; $i < 5; $i++)
                                 <flux:checkbox
@@ -175,13 +100,18 @@
 
             {{-- Lower Total --}}
             <tr class="h-10 bg-blue-200">
-                <td class="border border-gray-600 text-center px-3">{{ $this->getLowerTotal() }}</td>
+                <td class="border border-gray-600 px-3 text-center">{{ $this->getLowerTotal() }}</td>
             </tr>
 
             {{-- Grand Total --}}
-            <tr class="h-16 bg-yellow-200 text-lg border-t-4 border-double border-gray-600">
-                <td class="border border-gray-600 text-center px-3">{{ $this->getGrandTotal() }}</td>
+            <tr class="h-16 bg-yellow-200 border-t-4 border-double border-gray-600 text-lg font-bold">
+                <td class="border border-gray-600 px-3 text-center">{{ $this->getGrandTotal() }}</td>
             </tr>
         </tbody>
     </table>
+    <script>
+        window.addEventListener('show-validation-error', (event) => {
+            alert(event.detail.error);
+        });
+    </script>
 </div>
