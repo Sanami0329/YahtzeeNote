@@ -106,11 +106,8 @@
     </form>
     <script>
         // バリデーションエラーのアラート表示
-        if (!window.validationErrorListenerAdded) {
-            window.addEventListener('show-validation-error', (event) => {
-                alert(event.detail.error); // detailでカスタムイベントのデータを受け取る
-            });
-            window.validationErrorListenerAdded = true;
-        }
+        window.addEventListener('show-validation-error', (event) => {
+            alert(event.detail.error); // detailでカスタムイベントのデータを受け取る
+        });
     </script>
 </div>
