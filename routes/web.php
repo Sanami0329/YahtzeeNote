@@ -19,4 +19,3 @@ require __DIR__ . '/settings.php';
 Route::get('/play/create', CreatePlay::class)->name('play.create');
 Route::get('/play/prepare', PreparePlay::class)->name('play.prepare');
 Route::get('/play/new-game', PlayGame::class)->name('play.game');
-// Route::get('/play/score', ScoreColumn::class)->name('play.score');
