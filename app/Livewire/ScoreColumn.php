@@ -160,7 +160,6 @@ class ScoreColumn extends Component
     /*
     Validation
     */
-
     protected function rules()
     {
         // nullble, 半角数字, 整数, min, max
@@ -196,6 +195,12 @@ class ScoreColumn extends Component
         return $messages;
     }
 
+
+    protected $listeners = [
+        'request-validation' => 'validateScores',
+        'save-player-score' => 'save',
+    ];
+
     // リスナーでrequest-validationを受け取って、このplayerのスコアのバリデーション実行
     public function validateScores()
     {
@@ -207,11 +212,6 @@ class ScoreColumn extends Component
             $this->dispatch('send-validation-result', $this->playerId, $e->validator->errors()->first());
         }
     }
-
-    protected $listeners = [
-        'request-validation' => 'validateScores',
-        'save-player-score' => 'save',
-    ];
 
     public function save()
     {

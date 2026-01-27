@@ -12,11 +12,11 @@ class PlayGame extends Component
     public int $playId;
     public array $players = [];
 
-    public array $playerErrors = [];
-
+    public array $validationResult = [];
+    public int $playerCount = 0;
+    public int $playerErrorCount = 0;
     public ?string $errorMsg = null;
 
-    public int $playerErrorCount = 0;
 
     public function mount()
     {
@@ -28,39 +28,38 @@ class PlayGame extends Component
             return redirect()->route('play.create');
         }
 
-        // 全playerのstatusを初期化
+        // 全playerのvalidationResultを初期化
         foreach ($this->players as $player) {
-            $this->playerErrors[$player['id']] = null;
+            $this->validationResult[$player['id']] = null;
         }
+
+        $this->playerCount = count($this->players);
     }
 
+
     /*
-     validationを受け取り実行する
+     save() →　validation-resultを受け取り実行する
     */
 
-    public function playerErrorsUpdate($playerId, $errorMessage)
-    {
-        $this->playerErrors[$playerId] = $errorMessage;
+    protected $listeners = [
+        'send-validation-result' => 'validationResultUpdate',
+    ];
 
+    public function validationResultUpdate($playerId, $errorMessage)
+    {
+        $this->validationResult[$playerId] = $errorMessage;
         $this->playerErrorCount++;
 
-        // 全player分のplayerErrorsが揃ったら判定
-        if ($this->playerErrorCount === count($this->players)) {
+        // 全player分のvalidationResultが揃ったらtrySaveを実行
+        if ($this->playerErrorCount === $this->playerCount) {
             $this->playerErrorCount = 0;
-
-            // 全playerのvalidationが通ったら保存イベントを発火
-            if (!$this->canSave()) {
-                $this->dispatch('show-validation-error', error: $this->errorMsg);
-                return;
-            }
-
-            $this->dispatch('save-player-score');
+            $this->trySave();
         }
     }
 
     private function canSave(): bool
     {
-        foreach ($this->playerErrors as $error) {
+        foreach ($this->validationResult as $error) {
             if ($error !== null) {
                 $this->errorMsg = $error;
                 return false;
@@ -70,10 +69,17 @@ class PlayGame extends Component
         return true;
     }
 
+    public function trySave()
+    {
+        if (!$this->canSave()) {
+            $this->dispatch('show-validation-error', error: $this->errorMsg);
+            $this->validationResult = [];
+            return;
+        }
 
-    protected $listeners = [
-        'send-validation-result' => 'playerErrorsUpdate',
-    ];
+        $this->dispatch('save-player-score');
+        $this->validationResult = [];
+    }
 
 
     public function save()

@@ -84,17 +84,12 @@
 
             {{-- Score Columns --}}
             <div class="flex">
-                @foreach($players as $player)
-                @php
-                $key = 'score-column-' . $player['id'];
-                @endphp
-                <div wire:key="{{ $key }}">
+                @foreach ($players as $player)
                     <livewire:score-column
-                        :key="$key"
+                        :key="'score-column-' . $player['id']"
                         :play-id="$playId"
                         :player-id="$player['id']"
                         :player-name="$player['name']" />
-                </div>
                 @endforeach
             </div>
         </div>
