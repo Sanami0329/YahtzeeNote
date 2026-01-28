@@ -46,10 +46,10 @@ class ScoreColumn extends Component
         'sixes' => ['label' => 'Sixes', 'min' => 0, 'max' => 30, 'step' => 6],
         'threeKind' => ['label' => 'Three of a Kind', 'min' => 0, 'max' => 30, 'step' => 1],
         'fourKind'  => ['label' => 'Four of a Kind', 'min' => 0, 'max' => 30, 'step' => 1],
-        'fullHouse' => ['label' => 'Full House', 'min' => 0, 'max' => 25, 'in' => [0,25], 'step' => 25],
-        'smallStraight' => ['label' => 'Small Straight', 'min' => 0, 'max' => 30, 'in' => [0,30], 'step' => 30],
-        'largeStraight' => ['label' => 'Large Straight', 'min' => 0, 'max' => 40, 'in' => [0,40], 'step' => 40],
-        'yahtzee' => ['label' => "Yahtzee", 'min' => 0, 'max' => 50, 'in' => [0,50], 'step' => 50],
+        'fullHouse' => ['label' => 'Full House', 'min' => 0, 'max' => 25, 'step' => 25],
+        'smallStraight' => ['label' => 'Small Straight', 'min' => 0, 'max' => 30, 'step' => 30],
+        'largeStraight' => ['label' => 'Large Straight', 'min' => 0, 'max' => 40, 'step' => 40],
+        'yahtzee' => ['label' => "Yahtzee", 'min' => 0, 'max' => 50, 'step' => 50],
         'chance'  => ['label' => 'Chance', 'min' => 0, 'max' => 30, 'step' => 1],
         'yahtzeeBonus' => ['label' => 'Yahtzee Bonus', 'min' => 0, 'max' => 500, 'step' => 100],
     ];
@@ -73,8 +73,20 @@ class ScoreColumn extends Component
         $this->playerName = $playerName;
 
         $this->scoreItems = array_merge($this->upperScores, $this->lowerScores);
-    }
 
+        $this->scoreConfig = collect($this->scoreConfig)
+            ->map(function ($config) {
+                return [
+                    ...$config,
+                    'in' => range(
+                        $config['min'],
+                        $config['max'],
+                        $config['step']
+                    ),
+                ];
+            })
+            ->toArray();
+    }
 
     // decrement button calc
     public function decrement($field)
@@ -164,14 +176,13 @@ class ScoreColumn extends Component
     {
         // nullble, 半角数字, 整数, min, max
         return collect($this->scoreConfig)
-            ->mapWithKeys(fn ($config, $configField) => [
+            ->flatMap(fn ($config, $configField) => [
                 $configField => array_filter([
                     'required',
                     'integer',
                     'min:' . $config['min'],
                     'max:' . $config['max'],
-                    // issetでconfigにinがあるか確認し(bool)、あればinルールを追加、なければnullを返す
-                    isset($config['in']) ? 'in:' . implode(',', $config['in']) : null,
+                    'in:' . implode(',', $config['in']),
                 ]),
             ])->toArray();
     }
@@ -186,9 +197,12 @@ class ScoreColumn extends Component
             $messages["{$field}.min"] = "{$config['label']}には{$config['min']}～{$config['max']}までの数字を入力してください";
             $messages["{$field}.max"] = "{$config['label']}には{$config['min']}～{$config['max']}までの数字を入力してください";
 
-            if (isset($config['in'])) {
-                $inValues = implode('または', $config['in']);
-                $messages["{$field}.in"] = "{$config['label']}には{$inValues}のみ入力可能です";
+            if (count($this->scoreConfig[$field]['in']) > 2) {
+                $inValues = implode('、', $this->scoreConfig[$field]['in']);
+                $messages["{$field}.in"] = "{$config['label']}には{$inValues}のいずれかを入力してください";
+            } elseif (count($this->scoreConfig[$field]['in']) === 2) {
+                $inValues = implode('または', $this->scoreConfig[$field]['in']);
+                $messages["{$field}.in"] = "{$config['label']}には{$inValues}を入力してください";
             }
         }
 
