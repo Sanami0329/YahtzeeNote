@@ -21,7 +21,7 @@
                     <flux:button wire:click="removeInput({{ $i }})" class="w-12 shrink-0 !text-red-400">{{ __('削除') }}</flux:button>
                 </div>
                 @error("subusers.$i")
-                <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
+                <p class="text-red-400 text-sm mt-2">{{ $message }}</p>
                 @enderror
             </div>
             @endforeach
@@ -34,7 +34,7 @@
 
 
             {{-- submit button --}}
-            <flux:button type="submit" class="mx-auto w-48 text-lg font-semibold !bg-brand-yellow-200 hover:!bg-brand-yellow-100 hover:!font-bold !text-black" variant="primary">
+            <flux:button type="submit" class="mx-auto w-48 text-lg font-semibold !bg-brand-yellow-400 hover:!bg-brand-yellow-600 hover:!font-bold !text-zinc-900" variant="primary">
                 {{ __('このメンバーで始める') }}
             </flux:button>
         </flux:field>

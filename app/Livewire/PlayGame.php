@@ -101,6 +101,6 @@ class PlayGame extends Component
 
     public function render()
     {
-        return view('livewire.play-game', ['players' => $this->players]);
+        return view('livewire.play-game');
     }
 }

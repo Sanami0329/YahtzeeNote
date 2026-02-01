@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Livewire\CreatePlay;
+use App\Livewire\Dashboard;
 use App\Livewire\PlayGame;
 use App\Livewire\PreparePlay;
 use App\Livewire\ScoreColumn;
@@ -10,7 +11,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::view('dashboard', 'dashboard')
+Route::get('/home', Dashboard::class)
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 

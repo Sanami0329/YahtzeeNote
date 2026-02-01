@@ -12,19 +12,38 @@
     --font-sans: 'Open Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
     --font-heading: 'Open Sans', var(--font-sans);
 
-    /* Brand color palette (provided) */
-    --color-brand-red-100: #DA6272;
-    --color-brand-red-200: #E38692;
-    --color-brand-red-300: #F1BFC6;
-    --color-brand-red-400: #F8DFE1;
-    --color-brand-blue-100: #6A8CC7;
-    --color-brand-blue-200: #8BA7D5;
-    --color-brand-blue-300: #C1D0EA;
-    --color-brand-blue-400: #DFE8F5;
-    --color-brand-yellow-100: #FFEE55;
-    --color-brand-yellow-200: #FFF280;
+    /* Brand red color */
+    --color-brand-red-100: #F9E2E5;
+    --color-brand-red-200: #F3C7CD;
+    --color-brand-red-300: #ECACB5;
+    --color-brand-red-400: #E6939D;
+    --color-brand-red-500: #E07987;
+     --color-brand-red-600: #DA6272;
+     --color-brand-red-700: #D34C5E;
+     --color-brand-red-800: #CD384B;
+     --color-brand-red-900: #C7243A;
+
+    /* Brand blue color */
+    --color-brand-blue-100: #E3EAF6;
+    --color-brand-blue-200: #C7D5EC;
+    --color-brand-blue-300: #AEC1E3;
+    --color-brand-blue-400: #95AFDA;
+    --color-brand-blue-500: #7F9ED0;
+    --color-brand-blue-600: #6A8CC7;
+    --color-brand-blue-700: #567DBE;
+    --color-brand-blue-800: #436FB4;
+    --color-brand-blue-900: #3261AB;
+
+    /* Brand yellow color */
+    --color-brand-yellow-100: #FFFCE3;
+    --color-brand-yellow-200: #FFF9C6;
     --color-brand-yellow-300: #FFF7AA;
-    --color-brand-yellow-400: #FFFBD5;
+    --color-brand-yellow-400: #FFF48E;
+    --color-brand-yellow-500: #FFF171;
+    --color-brand-yellow-600: #FFEE55;
+    --color-brand-yellow-700: #FFEB39;
+    --color-brand-yellow-800: #FFE81C;
+    --color-brand-yellow-900: #FFE600;
 
     /* Legacy zinc colors */
     --color-zinc-50: #fafafa;
@@ -95,19 +114,42 @@
     .bg-brand-red-200 { background-color: var(--color-brand-red-200); }
     .bg-brand-red-300 { background-color: var(--color-brand-red-300); }
     .bg-brand-red-400 { background-color: var(--color-brand-red-400); }
+    .bg-brand-red-500 { background-color: var(--color-brand-red-500); }
+    .bg-brand-red-600 { background-color: var(--color-brand-red-600); }
+    .bg-brand-red-700 { background-color: var(--color-brand-red-700); }
+    .bg-brand-red-800 { background-color: var(--color-brand-red-800); }
+    .bg-brand-red-900 { background-color: var(--color-brand-red-900); }
+
     .bg-brand-blue-100 { background-color: var(--color-brand-blue-100); }
     .bg-brand-blue-200 { background-color: var(--color-brand-blue-200); }
     .bg-brand-blue-300 { background-color: var(--color-brand-blue-300); }
     .bg-brand-blue-400 { background-color: var(--color-brand-blue-400); }
+    .bg-brand-blue-500 { background-color: var(--color-brand-blue-500); }
+    .bg-brand-blue-600 { background-color: var(--color-brand-blue-600); }
+    .bg-brand-blue-700 { background-color: var(--color-brand-blue-700); }
+    .bg-brand-blue-800 { background-color: var(--color-brand-blue-800); }
+    .bg-brand-blue-900 { background-color: var(--color-brand-blue-900); }
+
     .bg-brand-yellow-100 { background-color: var(--color-brand-yellow-100); }
     .bg-brand-yellow-200 { background-color: var(--color-brand-yellow-200); }
     .bg-brand-yellow-300 { background-color: var(--color-brand-yellow-300); }
     .bg-brand-yellow-400 { background-color: var(--color-brand-yellow-400); }
+    .bg-brand-yellow-500 { background-color: var(--color-brand-yellow-500); }
+    .bg-brand-yellow-600 { background-color: var(--color-brand-yellow-600); }
+    .bg-brand-yellow-700 { background-color: var(--color-brand-yellow-700); }
+    .bg-brand-yellow-800 { background-color: var(--color-brand-yellow-800); }
+    .bg-brand-yellow-900 { background-color: var(--color-brand-yellow-900); }
 
     /* Hover states (use slightly darker/lighter values as appropriate) */
     .hover\:bg-brand-yellow-100:hover { background-color: var(--color-brand-yellow-100); }
     .hover\:bg-brand-yellow-200:hover { background-color: var(--color-brand-yellow-200); }
     .hover\:bg-brand-yellow-300:hover { background-color: var(--color-brand-yellow-300); }
+    .hover\:bg-brand-yellow-400:hover { background-color: var(--color-brand-yellow-400); }
+    .hover\:bg-brand-yellow-500:hover { background-color: var(--color-brand-yellow-500); }
+    .hover\:bg-brand-yellow-600:hover { background-color: var(--color-brand-yellow-600); }
+    .hover\:bg-brand-yellow-700:hover { background-color: var(--color-brand-yellow-700); }
+    .hover\:bg-brand-yellow-800:hover { background-color: var(--color-brand-yellow-800); }
+    .hover\:bg-brand-yellow-900:hover { background-color: var(--color-brand-yellow-900); }
 }
 
 

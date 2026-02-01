@@ -14,16 +14,13 @@
             <x-app-logo href="{{ route('dashboard') }}" wire:navigate />
 
             <flux:navbar class="-mb-px max-lg:hidden border-b-0">
-                <flux:navbar.item icon="play" class="after:hidden after:content-none" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
-                    {{ __('ゲームを始める') }}
-                </flux:navbar.item>
 
                 <flux:navbar.item icon="home" class="after:hidden after:content-none" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
                     Home
                 </flux:navbar.item>
 
                 <flux:navbar.item icon="book-open-text" class="after:hidden after:content-none" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
-                    {{ __('ゲームの説明') }}
+                    {{ __('遊び方') }}
                 </flux:navbar.item>
 
             </flux:navbar>
@@ -56,6 +53,9 @@
                 </flux:tooltip>
             </flux:navbar> --}}
 
+            <flux:navbar.item icon="play" class="after:hidden after:content-none mx-2" :href="route('play.create')" :current="request()->routeIs('dashboard')" wire:navigate>
+                {{ __('ゲームを始める') }}
+            </flux:navbar.item>
             <x-desktop-user-menu />
         </flux:header>
 
