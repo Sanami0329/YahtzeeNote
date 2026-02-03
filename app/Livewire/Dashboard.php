@@ -6,7 +6,7 @@ use App\Models\Subuser;
 use Livewire\Component;
 use Livewire\Attributes\Title;
 use Illuminate\Validation\Rule;
-use App\Models\Player;
+use App\Models\Score;
 use Illuminate\Support\Facades\DB;
 
 #[Title("ダッシュボード")]
@@ -19,11 +19,13 @@ class Dashboard extends Component
 
     public function mount()
     {
-        $this->playCount = 12; // Example value
-        $this->highestScore = 567; // Example value
-        $this->registeredMembers = 90; // Example value
+        $this->playCount = Score::where('player_id', auth()->id())->count();
+        $this->highestScore = Score::where('player_id', auth()->id())->max('total') ?? 0;
+        $this->registeredMembers = Subuser::where('user_id', auth()->id())->count();
         $this->registeredGroups = 3; // Example value
     }
+
+
 
     public function render()
     {

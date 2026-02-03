@@ -53,7 +53,7 @@
                 </flux:tooltip>
             </flux:navbar> --}}
 
-            <flux:navbar.item icon="play" class="after:hidden after:content-none mx-2" :href="route('play.create')" :current="request()->routeIs('dashboard')" wire:navigate>
+            <flux:navbar.item icon="play" class="after:hidden after:content-none mx-4" :href="route('play.create')" :current="request()->routeIs('dashboard')" wire:navigate>
                 {{ __('ゲームを始める') }}
             </flux:navbar.item>
             <x-desktop-user-menu />

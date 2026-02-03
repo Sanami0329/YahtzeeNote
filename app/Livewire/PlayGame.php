@@ -146,6 +146,7 @@ class PlayGame extends Component
                             'yahtzee' => $player['score']['yahtzee']  ,
                             'chance' => $player['score']['chance'],
                             'yahtzee_bonus' => $player['score']['yahtzeeBonus'],
+                            'total' => $player['score']['total'],
                         ],
                     );
                 }

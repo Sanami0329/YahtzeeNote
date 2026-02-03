@@ -29,6 +29,7 @@ return new class extends Migration
             $table->integer('yahtzee');
             $table->integer('chance');
             $table->integer('yahtzee_bonus');
+            $table->integer('total');
             $table->timestamps();
         });
     }

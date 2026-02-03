@@ -12,18 +12,24 @@
                 <div class="w-24 text-left text-base font-bold text-zinc-700">{{ __('総プレイ数') }}</div>
                 <div class="w-16 text-right text-base text-zinc-700">{{ $playCount }}</div>
             </flux:card>
-            <flux:card class="max-w-2xl h-12 flex justify-between items-center gap-20 p-6 bg-white rounded-lg shadow-md">
-                <div class="w-24 text-left text-base font-bold text-zinc-700">{{ __('最高スコア') }}</div>
-                <div class="w-16 text-right text-base text-zinc-700">{{ $highestScore }}</div>
-            </flux:card>
-            <flux:card class="max-w-2xl h-12 flex justify-between items-center gap-20 p-6 bg-white rounded-lg shadow-md">
-                <div class="w-24 text-left text-base font-bold text-zinc-700">{{ __('登録メンバー') }}</div>
-                <div class="w-16 text-right text-base text-zinc-700">{{ $registeredMembers }}</div>
-            </flux:card>
-            <flux:card class="max-w-2xl h-12 flex justify-between items-center gap-20 p-6 bg-white rounded-lg shadow-md">
-                <div class="w-24 text-left text-base font-bold text-zinc-700">{{ __('登録グループ') }}</div>
-                <div class="w-16 text-right text-base text-zinc-700">{{ $registeredGroups }}</div>
-            </flux:card>
+            <a href="{{ route('score.history') }}" class="block">
+                <flux:card class="max-w-2xl h-12 flex justify-between items-center gap-20 p-6 bg-white rounded-lg shadow-md">
+                    <div class="w-24 text-left text-base font-bold text-zinc-700">{{ __('最高スコア') }}</div>
+                    <div class="w-16 text-right text-base text-zinc-700">{{ $highestScore }}</div>
+                </flux:card>
+            </a>
+            <a href="{{ route('play.create') }}" class="block">
+                <flux:card class="max-w-2xl h-12 flex justify-between items-center gap-20 p-6 bg-white rounded-lg shadow-md">
+                    <div class="w-24 text-left text-base font-bold text-zinc-700">{{ __('登録メンバー') }}</div>
+                    <div class="w-16 text-right text-base text-zinc-700">{{ $registeredMembers }}</div>
+                </flux:card>
+            </a>
+            <a href="{{ route('play.create') }}" class="block">
+                <flux:card class="max-w-2xl h-12 flex justify-between items-center gap-20 p-6 bg-white rounded-lg shadow-md">
+                    <div class="w-24 text-left text-base font-bold text-zinc-700">{{ __('登録グループ') }}</div>
+                    <div class="w-16 text-right text-base text-zinc-700">{{ $registeredGroups }}</div>
+                </flux:card>
+            </a>
 
         </div>
     </div>

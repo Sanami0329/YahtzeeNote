@@ -222,6 +222,9 @@ class ScoreColumn extends Component
             $playerScoreArray[$field] = $this->$field ?? 0;
         }
 
+        // 最後にtotalの値を追加
+        $playerScoreArray['total'] = $this->getGrandTotal();
+
         $this->dispatch('send-player-score', playId: $this->playId, playerId: $this->playerId, playerScore: $playerScoreArray);
     }
 
