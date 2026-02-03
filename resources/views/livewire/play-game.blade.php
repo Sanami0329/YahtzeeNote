@@ -94,7 +94,7 @@
         </div>
         <div class="flex items-center justify-center mt-6 mb-2 gap-8">
             <!-- <flux:button wire:click="" class="w-24 text-lg font-semibold">中止</flux:button> -->
-            <flux:button type="submit" class="w-24 !bg-brand-yellow-500 hover:!border-4 hover:!font-bold !text-zinc-900 !font-bold" variant="primary">登録</flux:button>
+            <flux:button type="submit" class="w-24 !bg-gray-100 hover:!bg-brand-yellow-600 hover:!font-bold !text-zinc-900 !font-bold" variant="primary">保存</flux:button>
             <!-- <flux:button wire:click="resetScore" class="w-24 text-lg font-semibold">リセット</flux:button> -->
         </div>
     </form>
