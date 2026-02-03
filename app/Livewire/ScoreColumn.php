@@ -161,6 +161,8 @@ class ScoreColumn extends Component
         return collect($this->scoreConfig)
             ->mapWithKeys(fn ($config, $configField) => [
                 $configField => array_filter([
+                    'required',
+                    'integer',
                     'min:' . $config['min'],
                     'max:' . $config['max'],
                     'in:' . implode(',', range(
@@ -168,8 +170,6 @@ class ScoreColumn extends Component
                         $config['max'],
                         $config['step']
                     )),
-                    'required',
-                    'integer',
                 ]),
             ])->toArray();
     }
@@ -179,14 +179,15 @@ class ScoreColumn extends Component
         $messages = [];
 
         foreach ($this->scoreConfig as $field => $config) {
+
+            $messages["{$field}.required"] = "スコアをすべて入力してください";
+            $messages["{$field}.integer"] = "スコアは整数で入力してください";
             $messages["{$field}.min"] = "{$config['label']}には{$config['min']}～{$config['max']}までの数字を入力してください";
             $messages["{$field}.max"] = "{$config['label']}には{$config['min']}～{$config['max']}までの数字を入力してください";
 
             $inValues = implode(', ', range($config['min'], $config['max'], $config['step']));
             $messages["{$field}.in"] = "{$config['label']}には{$inValues}のいずれかを入力してください";
 
-            $messages["{$field}.required"] = "スコアをすべて入力してください";
-            $messages["{$field}.integer"] = "スコアは整数で入力してください";
         }
 
         return $messages;

@@ -83,7 +83,7 @@
             {{-- Score Columns --}}
             {{-- kebab-case→camelCaseに自動変換されて、score-columnのlivewireコンポーネントに値が渡される --}}
             <div class="flex">
-                @foreach ($players as $player)
+                @foreach ($playerArray as $player)
                     <livewire:score-column
                         :key="'score-column-' . $player['id']"
                         :play-id="$playId"

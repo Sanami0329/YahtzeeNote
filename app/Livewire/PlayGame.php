@@ -8,7 +8,6 @@ use Livewire\Attributes\On;
 use App\Models\Score;
 use Illuminate\Support\Facades\DB;
 
-
 #[Title("Yahtzee Play")]
 class PlayGame extends Component
 {
@@ -153,6 +152,7 @@ class PlayGame extends Component
             });
 
             $this->scoreArray = [];
+            session()->forget(['play.id', 'players']);
             return redirect()->route('dashboard')->with('success', 'スコアを保存しました');
 
         } catch (\Throwable $e) {

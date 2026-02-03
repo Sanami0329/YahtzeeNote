@@ -44,9 +44,10 @@ class CreatePlay extends Component
             'subuserArray.*' => [
                 'required',
                 'string',
-                Rule::unique('subuserArray', 'name')->where('user_id', auth()->id()),
+                // subusersテーブルで名前が重複していないかチェック
+                Rule::unique('subusers', 'name')->where('user_id', auth()->id()),
+                // 入力中の配列内で同じ名前があるかチェック
                 function ($attribute, $value, $fail) {
-                    // 入力中の配列内で同じ名前があるかチェック
                     $counts = array_count_values($this->subuserArray);
                     if ($counts[$value] > 1) {
                         $fail('同じ名前は入力できません');
