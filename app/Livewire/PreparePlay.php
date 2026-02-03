@@ -12,7 +12,9 @@ class PreparePlay extends Component
 {
     public function mount()
     {
-        $subusers = session('subusers_data');
+        // createplayでsessionに保存した内容を取り出し、playgameのための情報を再度sessionに保存
+
+        $subusers = session('subusers.data');
 
         if (!$subusers) {
             return redirect()->route('play.create');
@@ -36,6 +38,7 @@ class PreparePlay extends Component
             'name' => $userPlayer->name,
         ];
 
+
         // sessionに保存されたsubusersを取り出してplayersに追加
         foreach ($subusers as $subuser) {
             $player = Player::where('subuser_id', $subuser['id'])->first();
@@ -49,9 +52,11 @@ class PreparePlay extends Component
         }
 
         session([
-            'play_id' => $play->id,
+            'play.id' => $play->id,
             'players' => $players,
         ]);
+
+        session()->forget('subusers.data');
 
         return redirect()->route('play.game');
     }

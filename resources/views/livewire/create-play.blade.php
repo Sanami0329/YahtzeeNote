@@ -14,19 +14,19 @@
             </div>
 
             {{-- subusers(players) --}}
-            @foreach($subusers as $i => $subuser)
+            @foreach($subuserArray as $i => $subuser)
             <div class="mb-4">
                 <div class="flex gap-4 items-center">
-                    <flux:input class="flex-1" wire:model="subusers.{{ $i }}" placeholder="player{{ $i + 1 }}" />
+                    <flux:input class="flex-1" wire:model="subuserArray.{{ $i }}" placeholder="player{{ $i + 1 }}" />
                     <flux:button wire:click="removeInput({{ $i }})" class="w-12 shrink-0 !text-red-400">{{ __('削除') }}</flux:button>
                 </div>
-                @error("subusers.$i")
+                @error("subuserArray.$i")
                 <p class="text-red-400 text-sm mt-2">{{ $message }}</p>
                 @enderror
             </div>
             @endforeach
 
-            @if (count($subusers) < 6)
+            @if (count($subuserArray) < 6)
                 <div class="flex justify-end mb-4">
                     <flux:button wire:click="addInput" class="w-12">{{ __('追加') }}</flux:button>
                 </div>

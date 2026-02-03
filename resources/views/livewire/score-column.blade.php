@@ -10,7 +10,7 @@
 
         <tbody>
             {{-- Upper Section --}}
-            @foreach($this->upperScores as $field)
+            @foreach($this->upperScoreArray as $field)
             <tr class="h-10 bg-brand-red-100">
                 <td class="border border-gray-600">
                     <div class="flex items-center justify-center gap-2 px-2">
@@ -53,7 +53,7 @@
             @endforeach
 
             {{-- Lower Section --}}
-            @foreach($this->lowerScores as $field)
+            @foreach($this->lowerScoreArray as $field)
             <tr class="h-10 bg-brand-blue-100">
                 <td class="border border-gray-600">
                     <div class="flex items-center justify-center gap-2 px-4">

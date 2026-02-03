@@ -14,40 +14,40 @@ use Illuminate\Support\Facades\DB;
 class CreatePlay extends Component
 {
 
-    public array $subusers = [];
+    public array $subuserArray = [];
 
     protected $messages = [
-        'subusers.*.unique' => '既存の名前と重複しています',
+        'subuserArray.*.unique' => '既存の名前と重複しています',
     ];
 
     public function mount()
     {
-        $this->subusers = [''];
+        $this->subuserArray = [''];
     }
 
     public function addInput()
     {
-        $this->subusers[] = '';
+        $this->subuserArray[] = '';
     }
 
     public function removeInput($index)
     {
-        unset($this->subusers[$index]);
+        unset($this->subuserArray[$index]);
         // 削除した段階で詰め直し
-        $this->subusers = array_values($this->subusers);
+        $this->subuserArray = array_values($this->subuserArray);
     }
 
     protected function rules()
     {
         return [
-            'subusers' => ['array', 'max:6'],
-            'subusers.*' => [
+            'subuserArray' => ['array', 'max:6'],
+            'subuserArray.*' => [
                 'required',
                 'string',
-                Rule::unique('subusers', 'name')->where('user_id', auth()->id()),
+                Rule::unique('subuserArray', 'name')->where('user_id', auth()->id()),
                 function ($attribute, $value, $fail) {
                     // 入力中の配列内で同じ名前があるかチェック
-                    $counts = array_count_values($this->subusers);
+                    $counts = array_count_values($this->subuserArray);
                     if ($counts[$value] > 1) {
                         $fail('同じ名前は入力できません');
                     }
@@ -64,17 +64,18 @@ class CreatePlay extends Component
     public function save()
     {
         // 空欄を除外
-        $this->subusers = array_filter($this->subusers);
+        $this->subuserArray = array_filter($this->subuserArray);
 
-        $this->subusers = array_values($this->subusers);
+        $this->subuserArray = array_values($this->subuserArray);
 
         $this->validate();
 
         $subusersData = [];
 
-        DB::transaction(function () use (&$subusersData) {
 
-            foreach ($this->subusers as $subName) {
+        DB::transaction(function () use (&$subusersData) { //ローカル変数を使用＆更新するために&で参照渡し
+
+            foreach ($this->subuserArray as $subName) {
                 $subuser = Subuser::firstOrcreate([
                     'user_id' => auth()->id(),
                     'name' => $subName,
@@ -97,7 +98,7 @@ class CreatePlay extends Component
             }
         });
 
-        session(['subusers_data' => $subusersData,]);
+        session(['subusers.data' => $subusersData,]);
 
         return redirect()->route('play.prepare');
     }

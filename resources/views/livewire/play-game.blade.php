@@ -1,5 +1,5 @@
 <div class="mx-auto">
-    <form wire:submit="save" class="overflow-x-auto">
+    <form wire:submit="checkBeforeSave" class="overflow-x-auto">
         <div class="flex justify-center gap-0 min-w-max">
             {{-- score name&description --}}
             <table class="w-auto border-collapse border-1 border-gray-600 font-normal text-zinc-800">
@@ -81,6 +81,7 @@
             </table>
 
             {{-- Score Columns --}}
+            {{-- kebab-case→camelCaseに自動変換されて、score-columnのlivewireコンポーネントに値が渡される --}}
             <div class="flex">
                 @foreach ($players as $player)
                     <livewire:score-column
@@ -98,8 +99,8 @@
         </div>
     </form>
     <script>
-        // バリデーションエラーのアラート表示
-        window.addEventListener('show-validation-error', (event) => {
+        // エラーのアラート表示()
+        window.addEventListener('show-error', (event) => {
             alert(event.detail.error); // detailでカスタムイベントのデータを受け取る
         });
     </script>
