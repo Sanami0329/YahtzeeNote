@@ -1,6 +1,6 @@
-<div>
+<div class="pt-8">
     @if (session('success'))
-        <div class="flex justify-center mb-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded">
+        <div class="flex justify-center mt-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded">
             {{ session('success') }}
         </div>
     @endif
@@ -18,7 +18,7 @@
                     <div class="w-16 text-right text-base text-zinc-700">{{ $highestScore }}</div>
                 </flux:card>
             </a>
-            <a href="{{ route('play.create') }}" class="block">
+            <a href="{{ route('show.subusers') }}" class="block">
                 <flux:card class="max-w-2xl h-12 flex justify-between items-center gap-20 p-6 bg-white rounded-lg shadow-md">
                     <div class="w-24 text-left text-base font-bold text-zinc-700">{{ __('登録メンバー') }}</div>
                     <div class="w-16 text-right text-base text-zinc-700">{{ $registeredMembers }}</div>

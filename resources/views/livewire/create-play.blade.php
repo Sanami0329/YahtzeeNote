@@ -1,4 +1,4 @@
-<div>
+<div class="pt-8">
     <form wire:submit="save" class="flex justify-center items-center min-h-screen">
         <flux:field class="w-full max-w-96 min-w-72 flex flex-col">
 
@@ -9,7 +9,7 @@
 
             {{-- user --}}
             <div class="flex gap-4 items-center mb-4">
-                <flux:input class="flex-1 pointer-events-none" name="user" :value="auth()->user()?->name" readonly />
+                <flux:input class="pointer-events-none" name="user" :value="auth()->user()?->name" readonly />
                 <div class="w-12 shrink-0"></div>
             </div>
 
@@ -17,7 +17,7 @@
             @foreach($subuserArray as $i => $subuser)
             <div class="mb-4">
                 <div class="flex gap-4 items-center">
-                    <flux:input class="flex-1" wire:model="subuserArray.{{ $i }}" placeholder="player{{ $i + 1 }}" />
+                    <flux:input class="" wire:model="subuserArray.{{ $i }}" placeholder="player{{ $i + 1 }}" />
                     <flux:button wire:click="removeInput({{ $i }})" class="w-12 shrink-0 !text-red-400">{{ __('削除') }}</flux:button>
                 </div>
                 @error("subuserArray.$i")

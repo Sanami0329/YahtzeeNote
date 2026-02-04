@@ -1,4 +1,4 @@
-<div class="mx-auto">
+<div class="pt-8 mx-auto">
     <form wire:submit="checkBeforeSave" class="overflow-x-auto">
         <div class="flex justify-center gap-0 min-w-max">
             {{-- score name&description --}}

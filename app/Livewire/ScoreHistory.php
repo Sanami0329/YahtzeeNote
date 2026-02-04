@@ -6,7 +6,9 @@ use Livewire\Component;
 use \App\Models\Score;
 use Livewire\WithPagination;
 use Livewire\Attributes\Computed;
+use Livewire\Attributes\Title;
 
+#[title("スコア履歴")]
 class ScoreHistory extends Component
 {
     use WithPagination;

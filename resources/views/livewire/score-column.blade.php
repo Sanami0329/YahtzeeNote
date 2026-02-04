@@ -1,4 +1,4 @@
-<div>
+<div class="pt-8">
     {{-- Score Table --}}
     <table class="border-collapse border-1 border-gray-600 font-normal text-zinc-800">
         {{-- Column Headers --}}

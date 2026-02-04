@@ -7,6 +7,7 @@ use App\Livewire\PlayGame;
 use App\Livewire\PreparePlay;
 use App\Livewire\ScoreColumn;
 use App\Livewire\ScoreHistory;
+use App\Livewire\ShowSubusers;
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,6 +20,7 @@ Route::get('/home', Dashboard::class)
 require __DIR__ . '/settings.php';
 
 Route::get('/score-history', ScoreHistory::class)->name('score.history');
+Route::get('/show/members', ShowSubusers::class)->name('show.subusers');
 
 Route::get('/play/create', CreatePlay::class)->name('play.create');
 Route::get('/play/prepare', PreparePlay::class)->name('play.prepare');
