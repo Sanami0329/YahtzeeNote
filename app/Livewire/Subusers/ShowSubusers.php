@@ -11,6 +11,13 @@ class ShowSubusers extends Component
 {
     use WithPagination;
 
+    public function moveEdit($subuserId)
+    {
+        $subuser = Subuser::findOrFail($subuserId);
+
+        return redirect()->route('edit.subuser', ['subuser' => $subuser]);
+    }
+
     public function render()
     {
         $subusers = Subuser::query()

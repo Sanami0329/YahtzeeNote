@@ -13,13 +13,13 @@
                 <div class="w-16 text-right text-base text-zinc-700">{{ $playCount }}</div>
             </flux:card>
             <a href="{{ route('score.history') }}" class="block">
-                <flux:card class="max-w-2xl h-12 flex justify-between items-center gap-20 p-6 bg-white rounded-lg shadow-md">
+                <flux:card class="max-w-2xl h-12 flex justify-between items-center gap-20 p-6 bg-white hover:bg-brand-red-100 rounded-lg shadow-md">
                     <div class="w-24 text-left text-base font-bold text-zinc-700">{{ __('最高スコア') }}</div>
                     <div class="w-16 text-right text-base text-zinc-700">{{ $highestScore }}</div>
                 </flux:card>
             </a>
-            <a href="{{ route('show.subusers') }}" class="block">
-                <flux:card class="max-w-2xl h-12 flex justify-between items-center gap-20 p-6 bg-white rounded-lg shadow-md">
+            <a href="{{ route('subusers.show') }}" class="block">
+                <flux:card class="max-w-2xl h-12 flex justify-between items-center gap-20 p-6 bg-white hover:bg-brand-red-100 rounded-lg shadow-md">
                     <div class="w-24 text-left text-base font-bold text-zinc-700">{{ __('登録メンバー') }}</div>
                     <div class="w-16 text-right text-base text-zinc-700">{{ $registeredMembers }}</div>
                 </flux:card>
