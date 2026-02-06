@@ -106,6 +106,7 @@
     ::file-selector-button {
         border-color: var(--color-gray-200, currentColor);
     }
+
 }
 
 @layer components {
@@ -140,15 +141,6 @@
     .bg-brand-yellow-800 { background-color: var(--color-brand-yellow-800); }
     .bg-brand-yellow-900 { background-color: var(--color-brand-yellow-900); }
 
-    .text-brand-yellow-100 { background-color: var(--color-brand-yellow-100); }
-    .text-brand-yellow-200 { background-color: var(--color-brand-yellow-200); }
-    .text-brand-yellow-300 { background-color: var(--color-brand-yellow-300); }
-    .text-brand-yellow-400 { background-color: var(--color-brand-yellow-400); }
-    .text-brand-yellow-500 { background-color: var(--color-brand-yellow-500); }
-    .text-brand-yellow-600 { background-color: var(--color-brand-yellow-600); }
-    .text-brand-yellow-700 { background-color: var(--color-brand-yellow-700); }
-    .text-brand-yellow-800 { background-color: var(--color-brand-yellow-800); }
-    .text-brand-yellow-900 { background-color: var(--color-brand-yellow-900); }
 
     /* Hover states (use slightly darker/lighter values as appropriate) */
     .hover\:bg-brand-yellow-100:hover { background-color: var(--color-brand-yellow-100); }
@@ -162,6 +154,19 @@
     .hover\:bg-brand-yellow-900:hover { background-color: var(--color-brand-yellow-900); }
 }
 
+@layer utilities {
+            
+    .text-brand-yellow-100 { background-color: var(--color-brand-yellow-100); }
+    .text-brand-yellow-200 { background-color: var(--color-brand-yellow-200); }
+    .text-brand-yellow-300 { background-color: var(--color-brand-yellow-300); }
+    .text-brand-yellow-400 { background-color: var(--color-brand-yellow-400); }
+    .text-brand-yellow-500 { background-color: var(--color-brand-yellow-500); }
+    .text-brand-yellow-600 { background-color: var(--color-brand-yellow-600); }
+    .text-brand-yellow-700 { background-color: var(--color-brand-yellow-700); }
+    .text-brand-yellow-800 { background-color: var(--color-brand-yellow-800); }
+    .text-brand-yellow-900 { background-color: var(--color-brand-yellow-900); }
+
+}
 
 [data-flux-field]:not(ui-radio, ui-checkbox) {
     @apply grid gap-2;
