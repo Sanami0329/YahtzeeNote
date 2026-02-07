@@ -17,7 +17,7 @@
 
         <flux:navbar class="-mb-px max-lg:hidden border-b-0">
 
-            <flux:navbar.item icon="home" class="after:hidden after:content-none" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
+            <flux:navbar.item icon="home" class="after:hidden after:content-none" :href="route('home')" :current="request()->routeIs('dashboard')" wire:navigate>
                 {{ __('ホーム') }}
             </flux:navbar.item>
 
@@ -75,7 +75,7 @@
                     {{ __('ゲームを始める') }}
                 </flux:button>
 
-                <flux:navbar.item icon="home" class="after:hidden after:content-none" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate class="mb-4">
+                <flux:navbar.item icon="home" class="after:hidden after:content-none" :href="route('home')" :current="request()->routeIs('dashboard')" wire:navigate class="mb-4">
                     Home
                 </flux:navbar.item>
 
@@ -91,10 +91,10 @@
         {{-- <flux:sidebar.nav>
             <flux:sidebar.item icon="folder-git-2" href="https://github.com/laravel/livewire-starter-kit" target="_blank">
                 {{ __('Repository') }}
-            </flux:sidebar.item>
-            <flux:sidebar.item icon="book-open-text" href="https://laravel.com/docs/starter-kits#livewire" target="_blank">
-                {{ __('Documentation') }}
-            </flux:sidebar.item>
+        </flux:sidebar.item>
+        <flux:sidebar.item icon="book-open-text" href="https://laravel.com/docs/starter-kits#livewire" target="_blank">
+            {{ __('Documentation') }}
+        </flux:sidebar.item>
         </flux:sidebar.nav> --}}
 
     </flux:sidebar>

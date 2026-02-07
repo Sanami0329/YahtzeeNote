@@ -38,7 +38,7 @@ class PlayGame extends Component
     public function quitGame()
     {
         session()->forget(['play.id', 'players']);
-        return redirect()->route('dashboard');
+        return redirect()->route('home');
     }
 
     public function resetScores()
@@ -168,7 +168,7 @@ class PlayGame extends Component
 
             $this->scoreArray = [];
             session()->forget(['play.id', 'players']);
-            return redirect()->route('dashboard')->with('success', 'スコアを保存しました');
+            return redirect()->route('home')->with('success', 'スコアを保存しました');
         } catch (\Throwable $e) {
             logger()->error($e->getMessage());
             logger()->error($e->getTraceAsString());

@@ -16,8 +16,8 @@ use App\Livewire\HowToPlay;
 
 
 Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+    return view('top');
+})->name('top');
 
 Route::middleware('guest')->group(function () {
 
@@ -30,7 +30,7 @@ Route::middleware('guest')->group(function () {
 
 Route::get('/home', Dashboard::class)
     ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+    ->name('home');
 
 require __DIR__ . '/settings.php';
 

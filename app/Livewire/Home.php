@@ -10,7 +10,7 @@ use App\Models\Score;
 use Illuminate\Support\Facades\DB;
 
 #[Title("ホーム")]
-class Dashboard extends Component
+class Home extends Component
 {
     public int $playCount;
     public int $highestScore;
@@ -29,7 +29,6 @@ class Dashboard extends Component
 
     public function render()
     {
-        return view('livewire.dashboard');
+        return view('livewire.home');
     }
-
 };
