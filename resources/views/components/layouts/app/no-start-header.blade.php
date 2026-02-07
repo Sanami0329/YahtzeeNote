@@ -13,17 +13,25 @@
     <flux:header container class="fixed w-full border-b border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
         <flux:sidebar.toggle class="lg:hidden mr-2" icon="bars-2" inset="left" />
 
-        <x-app-logo href="{{ route('top') }}" wire:navigate />
+        <x-app-logo href="{{ route('dashboard') }}" wire:navigate />
 
         <flux:navbar class="-mb-px max-lg:hidden border-b-0">
 
-            <flux:navbar.item icon="home" class="after:hidden after:content-none" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
-                {{ __('ホーム') }}
-            </flux:navbar.item>
+            <flux:navbar.item 
+                icon="home" 
+                class="after:hidden after:content-none" 
+                :href="route('dashboard')" 
+                wire:navigate
+                wire:confirm="ゲームを中断しますか？"
+                :current="request()->routeIs('dashboard')" >{{ __('ホーム') }}</flux:navbar.item>
 
-            <flux:navbar.item icon="book-open-text" class="after:hidden after:content-none" :href="route('howtoplay')" :current="request()->routeIs('dashboard')" wire:navigate>
-                {{ __('遊び方') }}
-            </flux:navbar.item>
+            <flux:navbar.item 
+            icon="book-open-text" 
+            class="after:hidden after:content-none" 
+            :href="route('dashboard')" 
+            wire:navigate
+            wire:confirm="ゲームを中断しますか？"
+            :current="request()->routeIs('dashboard')" >{{ __('遊び方') }}</flux:navbar.item>
 
         </flux:navbar>
 
@@ -31,7 +39,6 @@
 
         <flux:spacer />
 
-        {{-- --}}
         {{-- <flux:navbar class="me-1.5 space-x-0.5 rtl:space-x-reverse py-0!">
                 <flux:tooltip :content="__('Search')" position="bottom">
                     <flux:navbar.item class="!h-10 [&>div>svg]:size-5" icon="magnifying-glass" href="#" :label="__('Search')" />
@@ -56,9 +63,6 @@
                 </flux:tooltip>
             </flux:navbar> --}}
 
-        <flux:navbar.item icon="play" class="hidden sm:flex after:hidden after:content-none mr-4 border-1 hover:font-bold hover:!bg-brand-yellow-600 dark:hover:!text-zinc-800" :href="route('play.create')" :current="request()->routeIs('dashboard')" wire:navigate>
-            {{ __('ゲームを始める') }}
-        </flux:navbar.item>
         <x-desktop-user-menu />
     </flux:header>
 
@@ -66,37 +70,35 @@
     <flux:sidebar collapsible="mobile" sticky class="lg:hidden border-e border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
         <flux:sidebar.header>
             <flux:sidebar.collapse class="in-data-flux-sidebar-on-desktop:not-in-data-flux-sidebar-collapsed-desktop:-mr-2" />
-            {{-- <x-app-logo :sidebar="true" href="{{ route('top') }}" wire:navigate /> --}}
+            {{-- <x-app-logo :sidebar="true" href="{{ route('dashboard') }}" wire:navigate /> --}}
         </flux:sidebar.header>
 
         <flux:sidebar.nav>
             <flux:sidebar.group :heading="__('Platform')">
-                <flux:button icon="play" class="after:hidden after:content-none !bg-brand-yellow-400 hover:!bg-brand-yellow-600 hover:!font-bold !text-zinc-900" :href="route('play.create')" :current="request()->routeIs('dashboard')" wire:navigate class="mb-4">
+                <flux:navbar.item icon="play" class="after:hidden after:content-none" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate class="mb-4">
                     {{ __('ゲームを始める') }}
-                </flux:button>
+                </flux:navbar.item>
 
                 <flux:navbar.item icon="home" class="after:hidden after:content-none" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate class="mb-4">
                     Home
                 </flux:navbar.item>
 
-                <flux:navbar.item icon="book-open-text" class="after:hidden after:content-none" :href="route('howtoplay')" :current="request()->routeIs('dashboard')" wire:navigate class="mb-4">
-                    {{ __('遊び方') }}
+                <flux:navbar.item icon="book-open-text" class="after:hidden after:content-none" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate class="mb-4">
+                    {{ __('ゲームの説明') }}
                 </flux:navbar.item>
             </flux:sidebar.group>
         </flux:sidebar.nav>
 
         <flux:spacer />
 
-        {{-- --}}
-        {{-- <flux:sidebar.nav>
+        <flux:sidebar.nav>
             <flux:sidebar.item icon="folder-git-2" href="https://github.com/laravel/livewire-starter-kit" target="_blank">
                 {{ __('Repository') }}
             </flux:sidebar.item>
             <flux:sidebar.item icon="book-open-text" href="https://laravel.com/docs/starter-kits#livewire" target="_blank">
                 {{ __('Documentation') }}
             </flux:sidebar.item>
-        </flux:sidebar.nav> --}}
-
+        </flux:sidebar.nav>
     </flux:sidebar>
 
     {{ $slot }}

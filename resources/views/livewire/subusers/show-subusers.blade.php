@@ -11,17 +11,20 @@
             </ol>
         </nav>
 
-        @if (session('addStatus'))
-        <div class="mt-2 bg-green-100 text-green-500 text-sm text-center">
-            {{ session('addStatus') }}
-        </div>
-        @endif
+        @foreach ([
+            'addStatus'    => ['bg' => 'bg-green-100', 'text' => 'text-green-600'],
+            'editStatus'   => ['bg' => 'bg-green-100',  'text' => 'green-100'],
+            'editErrorStatus'   => ['bg' => 'bg-red-100',   'text' => 'text-red-600'],
+            'deleteStatus' => ['bg' => 'bg-red-100',   'text' => 'text-zinc-600'],
+        ] as $key => $style)
 
-        @if (session('deleteStatus'))
-        <div class="mt-2 bg-red-100 bg-text-red-500 text-sm text-center">
-            {{ session('deleteStatus') }}
-        </div>
-        @endif
+            @if (session($key))
+                <div class="mt-2 text-sm text-center {{ $style['bg'] }} {{ $style['text'] }}">
+                    {{ session($key) }}
+                </div>
+            @endif
+
+        @endforeach
 
         <h1 class="m-4 font-semibold text-lg text-center">登録メンバー</h1>
 

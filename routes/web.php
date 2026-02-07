@@ -11,7 +11,8 @@ use App\Livewire\Subusers\AddSubuser;
 use App\Livewire\Subusers\EditSubuser;
 use App\Livewire\Subusers\ShowSubusers;
 use App\Http\Controllers\Auth\GoogleLoginController;
-use App\Livewire\ShowToppage;
+use App\Livewire\Top;
+use App\Livewire\HowToPlay;
 
 
 Route::get('/', function () {
@@ -44,4 +45,5 @@ Route::get('/play/prepare', PreparePlay::class)->name('play.prepare');
 
 Route::get('/score-history', ScoreHistory::class)->name('score.history');
 
-Route::get('/top', ShowToppage::class)->name('show.top');
+Route::get('/top', Top::class)->name('top');
+Route::get('/how-to-play', HowToPlay::class)->name('howtoplay');

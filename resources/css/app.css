@@ -176,16 +176,36 @@
 }
 
 @layer utilities {
-            
-    .text-brand-yellow-100 { background-color: var(--color-brand-yellow-100); }
-    .text-brand-yellow-200 { background-color: var(--color-brand-yellow-200); }
-    .text-brand-yellow-300 { background-color: var(--color-brand-yellow-300); }
-    .text-brand-yellow-400 { background-color: var(--color-brand-yellow-400); }
-    .text-brand-yellow-500 { background-color: var(--color-brand-yellow-500); }
-    .text-brand-yellow-600 { background-color: var(--color-brand-yellow-600); }
-    .text-brand-yellow-700 { background-color: var(--color-brand-yellow-700); }
-    .text-brand-yellow-800 { background-color: var(--color-brand-yellow-800); }
-    .text-brand-yellow-900 { background-color: var(--color-brand-yellow-900); }
+    /* Brand red */
+    .text-brand-red-100 { color: var(--color-brand-red-100); }
+    .text-brand-red-200 { color: var(--color-brand-red-200); }
+    .text-brand-red-300 { color: var(--color-brand-red-300); }
+    .text-brand-red-400 { color: var(--color-brand-red-400); }
+    .text-brand-red-500 { color: var(--color-brand-red-500); }
+    .text-brand-red-600 { color: var(--color-brand-red-600); }
+    .text-brand-red-700 { color: var(--color-brand-red-700); }
+    .text-brand-red-800 { color: var(--color-brand-red-800); }
+    .text-brand-red-900 { color: var(--color-brand-red-900); }
+
+    .text-brand-blue-100 { color: var(--color-brand-blue-100); }
+    .text-brand-blue-200 { color: var(--color-brand-blue-200); }
+    .text-brand-blue-300 { color: var(--color-brand-blue-300); }
+    .text-brand-blue-400 { color: var(--color-brand-blue-400); }
+    .text-brand-blue-500 { color: var(--color-brand-blue-500); }
+    .text-brand-blue-600 { color: var(--color-brand-blue-600); }
+    .text-brand-blue-700 { color: var(--color-brand-blue-700); }
+    .text-brand-blue-800 { color: var(--color-brand-blue-800); }
+    .text-brand-blue-900 { color: var(--color-brand-blue-900); }
+
+    .text-brand-yellow-100 { color: var(--color-brand-yellow-100); }
+    .text-brand-yellow-200 { color: var(--color-brand-yellow-200); }
+    .text-brand-yellow-300 { color: var(--color-brand-yellow-300); }
+    .text-brand-yellow-400 { color: var(--color-brand-yellow-400); }
+    .text-brand-yellow-500 { color: var(--color-brand-yellow-500); }
+    .text-brand-yellow-600 { color: var(--color-brand-yellow-600); }
+    .text-brand-yellow-700 { color: var(--color-brand-yellow-700); }
+    .text-brand-yellow-800 { color: var(--color-brand-yellow-800); }
+    .text-brand-yellow-900 { color: var(--color-brand-yellow-900); }
 
 }
 

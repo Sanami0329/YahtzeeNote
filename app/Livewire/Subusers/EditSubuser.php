@@ -6,6 +6,7 @@ use App\Models\Subuser;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
 
 
 class EditSubuser extends Component
@@ -68,9 +69,27 @@ class EditSubuser extends Component
             abort(403);
         }
 
-        $this->subuser->update(['name' => $this->subuserName]);
+        try {
+            DB::transaction(function () {
+                $this->subuser->update([
+                    'name' => $this->subuserName,
+                ]);
 
-        return redirect()->route('subusers.show');
+                $this->subuser->player()->update([
+                    'name' => $this->subuserName,
+                ]);
+            });
+
+            return redirect()
+                ->route('subusers.show')
+                ->with('editStatus', 'メンバーの名前を変更しました。');
+        } catch (\Throwable $e) {
+            logger()->error($e);
+
+            return redirect()
+                ->route('subusers.show')
+                ->with('editErrorStatus', 'エラー：保存できませんでした。');
+        }
     }
 
     public function render()

@@ -13,7 +13,13 @@ class Subuser extends Model
 
     protected $fillable = ['user_id', 'name'];
 
-    public function user() {
-        return $this->belongsTo(User::Class);        
+    public function user()
+    {
+        return $this->belongsTo(User::Class);
+    }
+
+    public function player()
+    {
+        return $this->hasMany(Player::class);
     }
 }

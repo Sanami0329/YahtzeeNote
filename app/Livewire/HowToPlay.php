@@ -4,10 +4,10 @@ namespace App\Livewire;
 
 use Livewire\Component;
 
-class ShowToppage extends Component
+class HowToPlay extends Component
 {
     public function render()
     {
-        return view('livewire.show-toppage');
+        return view('livewire.how-to-play');
     }
 }
