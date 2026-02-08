@@ -13,30 +13,34 @@
                 <h1 class="mx-auto text-4xl md:text-5xl font-bold text-zinc-900 text-shadow">
                     YahtzeeNote
                 </h1>
-                <p class="mx-auto text-base md:text-lg px-8 text-shadow text-zinc-900 ">
+                <p class="mx-auto text-base md:text-lg px-8 text-shadow text-zinc-900 font-semibold">
                     Yahtzee（ヤッツィー）のスコアを紙要らずで素早く入力、自動計算。<br>
                     プレイ履歴やいつものメンバーもまとめて管理。
                 </p>
-                <flux:button variant="primary" class="mx-auto w-24 !bg-brand-yellow-200 hover:!bg-brand-yellow-400 !border-2 hover:!border-brand-yellow-600 !shadow-md !text-zinc-600 hover:!text-zinc-700">{{ __('使ってみる') }}</flux:button>
+                <flux:button
+                    variant="primary"
+                    class="mx-auto w-24 md:w-32 md:h-12 md:!text-base !bg-brand-yellow-400 hover:!bg-brand-yellow-600 !shadow-md !font-semibold hover:!font-bold !text-zinc-700">
+                    {{ __('使ってみる') }}
+                </flux:button>
             </div>
         </div>
     </section>
 
     <!-- Yahtzeeとは -->
     <section id="practice-areas" class="py-16 bg-white">
-        <div class="container mx-auto px-4 lg:px-16">
+        <div class="container mx-auto px-2 lg:px-16">
             <div class="text-center mb-10">
-                <h2 class="text-3xl md:text-4xl font-bold text-primary">Yahtzee（ヤッツィー）とは？</h2>
+                <h2 class="text-2xl md:text-3xl font-bold">Yahtzee（ヤッツィー）とは？</h2>
             </div>
 
             <div class="flex flex-col items-center">
-                <p class="text-center text-base">
-                    Yahtzeeとは、5つのサイコロを振って決められた組み合わせ（役）を作り、得点を競うゲームです。<br>
-                    13種類のスコア項目をすべて埋めた時点で、合計点が最も高い人が勝ちとなります。<br>
+                <p class="text-center text-base md:text-base text-sm">
+                    Yahtzeeとは、5つのサイコロを振って決められた<br class="sm:hidden">組み合わせ（役）を作り、得点を競うゲームです。<br>
+                    13種類のスコア項目をすべて埋めた時点で、<br class="sm:hidden">合計点が最も高い人が勝ちとなります。<br>
                     ルールは簡単！子どもから大人まで気軽に楽しむことができます。
                 </p>
 
-                <p class="mt-16 text-center font-semibold text-lg">
+                <p class="mt-16 text-center font-semibold md:text-lg">
                     YahtzeeNoteはストレスのない入力・自動計算により、テンポのよい快適なプレイをサポートします。
                 </p>
             </div>
@@ -45,16 +49,17 @@
     </section>
 
     <!-- YahtzeeNoteの特徴 -->
-    <section id="practice-areas" class="py-16 bg-brand-yellow-200">
-        <div class="container mx-auto px-4 lg:px-16 text-center">
+    <section id="practice-areas" class="p-4 lg:px-10 py-10 bg-brand-yellow-200">
 
-            <div class="lg:flex lg:items-center gap-20">
+        <div class="container mx-auto text-center">
 
-                <div class="mx-auto px-20 flex flex-col items-center text-center gap-10 text-center">
+            <div class="lg:flex lg:items-center lg:mx-10 gap-16">
 
-                    <h2 class="text-3xl md:text-4xl font-bold text-primary">YahtzeeNoteの特徴</h2>
+                <div class="lg:w-3/10 flex flex-col items-center lg:py-12 text-center text-center">
 
-                    <ul class="flex flex-col gap-4 text-left list-disc text-lg">
+                    <h2 class="lg:w-72 mb-6 lg:mb-10 text-2xl md:text-3xl font-bold">YahtzeeNoteの特徴</h2>
+
+                    <ul class="lg:w-72 space-y-2 text-center pl-6 gap-2 text-left list-disc text-base md:text-xl">
                         <li>
                             <h3>スコアの簡単入力、自動計算</h3>
                             <p></p>
@@ -72,27 +77,26 @@
                             <p></p>
                         </li>
                     </ul>
-
-                    <flux:button
-                        variant="primary"
-                        icon="play"
-                        class="hidden mx-auto text-center lg:flex after:hidden border hover:font-bold hover:!bg-brand-yellow-600 dark:hover:!text-zinc-800"
-                        :href="route('play.create')"
-                        :current="request()->routeIs('top')"
-                        wire:navigate>
-                        {{ __('ゲームを始める') }}
-                    </flux:button>
                 </div>
 
-                <div class="w-full">
+                <div class="w-full lg:w-7/10 my-10">
                     <video width="100%" height="auto" controls autoplay muted playsinline loop>
                         <source src="{{ asset('videos/input_scores.mp4') }}" type="video/mp4">
                         <p>動画を再生できないブラウザを使用しています。</p>
                     </video>
                 </div>
+
             </div>
 
-            <flux:button variant="primary" class="lg:hidden mx-auto w-30">{{ __('ゲームを始める') }}</flux:button>
+            <flux:button
+                variant="primary"
+                icon="play"
+                class="lg:mt-12 text-center border bg-white !text-zinc-600 hover:!bg-brand-yellow-600 !font-semibold hover:!font-bold"
+                :href="route('play.create')"
+                :current="request()->routeIs('top')"
+                wire:navigate>
+                {{ __('ゲームを始める') }}
+            </flux:button>
 
         </div>
     </section>

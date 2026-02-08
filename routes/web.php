@@ -19,6 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+
 Route::middleware('guest')->group(function () {
 
     Route::get('auth/google', [GoogleLoginController::class, 'redirectToGoogle'])
@@ -28,13 +29,15 @@ Route::middleware('guest')->group(function () {
         ->name('auth.google.callbck');
 });
 
-Route::get('/home', Dashboard::class)
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+
 
 require __DIR__ . '/settings.php';
 
 
+Route::get('/home', Dashboard::class)
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
+    
 Route::get('/members/show', ShowSubusers::class)->name('subusers.show');
 Route::get('/members/{subuser}/edit', EditSubuser::class)->name('edit.subuser');
 Route::get('/members/add', AddSubuser::class)->name('add.subuser');

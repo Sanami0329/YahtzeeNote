@@ -9,7 +9,7 @@
 
 </head>
 
-<body class="min-h-screen bg-white dark:bg-zinc-800">
+<body class="min-h-screen w-full bg-white dark:bg-zinc-800">
     <flux:header container class="fixed w-full border-b border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 pt-2 lg:pt-0">
         <flux:sidebar.toggle class="lg:hidden mr-2" icon="bars-2" inset="left" />
 
@@ -27,9 +27,16 @@
 
         </flux:navbar>
 
-
-
         <flux:spacer />
+
+        <flux:button
+            icon="play"
+            class="hidden sm:flex after:hidden after:content-none mr-4 border hover:font-bold hover:!bg-brand-yellow-600 dark:hover:!text-zinc-800"
+            :href="route('play.create')"
+            :current="request()->routeIs('dashboard')"
+            wire:navigate>
+            {{ __('ゲームを始める') }}
+        </flux:button>
 
         {{-- --}}
         {{-- <flux:navbar class="me-1.5 space-x-0.5 rtl:space-x-reverse py-0!">
@@ -56,9 +63,6 @@
                 </flux:tooltip>
             </flux:navbar> --}}
 
-        <flux:navbar.item icon="play" class="hidden sm:flex after:hidden after:content-none mr-4 border hover:font-bold hover:!bg-brand-yellow-600 dark:hover:!text-zinc-800" :href="route('play.create')" :current="request()->routeIs('dashboard')" wire:navigate>
-            {{ __('ゲームを始める') }}
-        </flux:navbar.item>
         <x-desktop-user-menu />
     </flux:header>
 
