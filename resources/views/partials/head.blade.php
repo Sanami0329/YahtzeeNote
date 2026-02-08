@@ -3,8 +3,8 @@
 
 <title>{{ $title ?? config('app.name') }}</title>
 
-<link rel="icon" href="/dices.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/dices.png">
+<link rel="icon" href="{{ asset('icons/dices.svg') }}" type="image/svg+xml">
+<link rel="apple-touch-icon" href="{{ asset('apple-touch-icon') }}">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
