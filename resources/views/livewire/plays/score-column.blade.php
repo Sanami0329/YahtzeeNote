@@ -1,6 +1,6 @@
 <div class="">
     {{-- Score Table --}}
-    <table class="border-collapse border-t-1 border-b-1 border-r-1 font-normal text-zinc-600">
+    <table class="border-collapse border-t-1 border-b-1 border-r-1 font-normal !text-zinc-600">
         {{-- Column Headers --}}
         <thead>
             <tr class="max-w-44 h-10 bg-white">
@@ -17,23 +17,23 @@
                         <flux:button
                             size="xs"
                             wire:click="decrement('{{ $field }}')"
-                            class="!bg-zinc-200 !text-zinc-600 border-t-1 border-b-1 border-r-1 !border-zinc-600"
-                            style="width: 24px">
+                            :loading="false"
+                            class="w-6 !bg-zinc-200 !text-zinc-600 border !border-zinc-600 select-none">
                             -
                         </flux:button>
                         <flux:input
                             type="number"
                             size="xs"
                             wire:model.lazy="{{ $field }}"
-                            class="!w-14 bg-white border-t-1 border-b-1 border-r-1 border-zinc-600"
-                            style="text-align: center; color: var(--color-zinc-600);"
+                            class="!w-14 bg-white border border-zinc-600"
+                            style="text-align: center;"
                             max="{{ $this->scoreConfig[$field]['max'] }}"
                             min="0" />
                         <flux:button
                             size="xs"
                             wire:click="increment('{{ $field }}')"
-                            class="!bg-zinc-200 !text-zinc-600 !border-t-1 border-b-1 border-r-1 !border-zinc-600"
-                            style="width: 24px">
+                            :loading="false"
+                            class="w-6 !bg-zinc-200 !text-zinc-600 border !border-zinc-600 select-none">
                             +
                         </flux:button>
                     </div>
@@ -60,23 +60,23 @@
                         <flux:button
                             size="xs"
                             wire:click="decrement('{{ $field }}')"
-                            class="!bg-zinc-200 !text-zinc-600 border-t-1 border-b-1 border-r-1 !border-zinc-600"
-                            style="width: 24px">
+                            :loading="false"
+                            class="w-6 !bg-zinc-200 !text-zinc-600 border !border-zinc-600 select-none">
                             -
                         </flux:button>
                         <flux:input
                             type="number"
                             size="xs"
                             wire:model.lazy="{{ $field }}"
-                            class="!w-14 bg-white border-t-1 border-b-1 border-r-1 border-zinc-600"
-                            style="text-align: center; color: var(--color-zinc-600);"
+                            class="!w-14 bg-white border border-zinc-600"
+                            style="text-align: center;"
                             max="{{ $this->scoreConfig[$field]['max'] }}"
                             min="0" />
                         <flux:button
                             size="xs"
                             wire:click="increment('{{ $field }}')"
-                            class="!bg-zinc-200 !text-zinc-600 border-t-1 border-b-1 border-r-1 !border-zinc-600"
-                            style="width: 24px">
+                            :loading="false"
+                            class="w-6 !bg-zinc-200 !text-zinc-600 border !border-zinc-600 select-none">
                             +
                         </flux:button>
                     </div>
@@ -93,7 +93,7 @@
                             < 5; $i++)
                                 <flux:checkbox
                                 wire:model.live="yahtzeeBonusItems.{{ $i }}"
-                                class="bg-white border-t-1 border-b-1 border-r-1 border-zinc-600" />
+                                class="bg-white border border-zinc-600" />
                             @endfor
                         </div>
                         <div class="text-center text-zinc-600 px-4">

@@ -67,6 +67,11 @@ class User extends Authenticatable
         return $this->hasMany(Subuser::class);
     }
 
+    public function player()
+    {
+        return $this->hasMany(Player::class);
+    }
+
     protected static function booted()
     {
         static::created(function (User $user) {

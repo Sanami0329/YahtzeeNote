@@ -51,6 +51,10 @@ class Profile extends Component
 
         $user->save();
 
+        $user->player()->update([
+            'name' => $this->name,
+        ]);
+
         $this->dispatch('profile-updated', name: $user->name);
     }
 

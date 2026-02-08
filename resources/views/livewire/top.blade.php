@@ -17,7 +17,7 @@
                     Yahtzee（ヤッツィー）のスコアを紙要らずで素早く入力、自動計算。<br>
                     プレイ履歴やいつものメンバーもまとめて管理。
                 </p>
-                <flux:button variant="primary" class="mx-auto w-24">{{ __('使ってみる') }}</flux:button>
+                <flux:button variant="primary" class="mx-auto w-24 !bg-brand-yellow-200 hover:!bg-brand-yellow-400 !border-2 hover:!border-brand-yellow-600 !shadow-md !text-zinc-600 hover:!text-zinc-700">{{ __('使ってみる') }}</flux:button>
             </div>
         </div>
     </section>
@@ -46,33 +46,54 @@
 
     <!-- YahtzeeNoteの特徴 -->
     <section id="practice-areas" class="py-16 bg-brand-yellow-200">
-        <div class="container mx-auto px-4 lg:px-16">
+        <div class="container mx-auto px-4 lg:px-16 text-center">
 
-            <div class="text-center mb-10">
-                <h2 class="text-3xl md:text-4xl font-bold text-primary">YahtzeeNoteの特徴</h2>
+            <div class="lg:flex lg:items-center gap-20">
 
-                <ul class="flex flex-col gap-4 text-left list-disc text-lg">
-                    <li>
-                        <h3>スコアの簡単入力、自動計算</h3>
-                        <p></p>
-                    </li>
-                    <li>
-                        <h3>最大６人まで同時プレイ可能</h3>
-                        <p></p>
-                    </li>
-                    <li>
-                        <h3>スコア履歴の保存・閲覧</h3>
-                        <p></p>
-                    </li>
-                    <li>
-                        <h3>メンバーの登録・管理</h3>
-                        <p></p>
-                    </li>
-                </ul>
+                <div class="mx-auto px-20 flex flex-col items-center text-center gap-10 text-center">
 
-                <flux:button variant="primary" class="mx-auto w-24">{{ __('ゲームを始める') }}</flux:button>
-                
+                    <h2 class="text-3xl md:text-4xl font-bold text-primary">YahtzeeNoteの特徴</h2>
+
+                    <ul class="flex flex-col gap-4 text-left list-disc text-lg">
+                        <li>
+                            <h3>スコアの簡単入力、自動計算</h3>
+                            <p></p>
+                        </li>
+                        <li>
+                            <h3>最大６人まで同時プレイ可能</h3>
+                            <p></p>
+                        </li>
+                        <li>
+                            <h3>スコア履歴の保存・閲覧</h3>
+                            <p></p>
+                        </li>
+                        <li>
+                            <h3>メンバーの登録・管理</h3>
+                            <p></p>
+                        </li>
+                    </ul>
+
+                    <flux:button
+                        variant="primary"
+                        icon="play"
+                        class="hidden mx-auto text-center lg:flex after:hidden border hover:font-bold hover:!bg-brand-yellow-600 dark:hover:!text-zinc-800"
+                        :href="route('play.create')"
+                        :current="request()->routeIs('top')"
+                        wire:navigate>
+                        {{ __('ゲームを始める') }}
+                    </flux:button>
+                </div>
+
+                <div class="w-full">
+                    <video width="100%" height="auto" controls autoplay muted playsinline loop>
+                        <source src="{{ asset('videos/input_scores.mp4') }}" type="video/mp4">
+                        <p>動画を再生できないブラウザを使用しています。</p>
+                    </video>
+                </div>
             </div>
+
+            <flux:button variant="primary" class="lg:hidden mx-auto w-30">{{ __('ゲームを始める') }}</flux:button>
+
         </div>
     </section>
 </div>

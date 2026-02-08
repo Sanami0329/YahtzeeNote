@@ -1,4 +1,4 @@
-<section class="w-full">
+<section class="w-full mt-10">
     @include('partials.settings-heading')
 
     <flux:heading class="sr-only">{{ __('画面設定') }}</flux:heading>
