@@ -24,13 +24,22 @@ class GoogleLoginController extends Controller
     {
         $google_account = Socialite::driver('google')->user();
 
-        $user = User::updateOrCreate([
-            'google_id' => $google_account->getId(),
-        ], [
-            'email' => $google_account->getEmail(),
-            'name' => $google_account->getName(),
-            'email_verified_at' => now(),
-        ]);
+        $user = User::where('email', $google_account->getEmail())->first();
+
+        if ($user) {
+
+            $user->update([
+                'google_id' => $google_account->getId(),
+            ]);
+        } else {
+            
+            $user = User::create([
+                'email' => $google_account->getEmail(),
+                'name' => $google_account->getName(),
+                'google_id' => $google_account->getId(),
+                'email_verified_at' => now(),
+            ]);
+        }
 
         Auth::login($user);
 
