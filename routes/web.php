@@ -15,9 +15,7 @@ use App\Livewire\Top;
 use App\Livewire\HowToPlay;
 
 
-Route::get('/', function () {
-    return view('top');
-})->name('top');
+Route::get('/', Top::class)->name('top');
 
 
 Route::middleware('guest')->group(function () {
