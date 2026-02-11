@@ -17,13 +17,24 @@
                     Yahtzee（ヤッツィー）のスコアを紙要らずで素早く入力、自動計算。<br>
                     プレイ履歴やいつものメンバーもまとめて管理。
                 </p>
+                @auth
                 <flux:link
-                    class="mx-auto px-4 lg:text- text-zinc-700 mb-8"
+                    class="mx-auto px-4 lg:text-xl text-zinc-700 mb-8"
                     :current="request()->routeIs('top')"
-                    :href="route('howtoplay')"
+                    :href="route('dashboard')"
                     wire:navigate>
                     {{ __('使ってみる') }}
                 </flux:link>
+                @endauth
+                @guest
+                <flux:link
+                    class="mx-auto px-4 lg:text-xl text-zinc-700 mb-8"
+                    :current="request()->routeIs('top')"
+                    :href="route('login')"
+                    wire:navigate>
+                    {{ __('使ってみる') }}
+                </flux:link>
+                @endguest
             </div>
         </div>
     </section>
@@ -99,7 +110,7 @@
                 variant="primary"
                 icon="play"
                 class="lg:mt-12 lg:w-32 lg:h-12 text-center border bg-white !text-zinc-600 hover:!bg-brand-yellow-600 !font-semibold hover:!font-bold"
-                :href="route('dashboard')"
+                :href="route('play.create')"
                 :current="request()->routeIs('top')"
                 wire:navigate>
                 {{ __('ゲームを始める') }}

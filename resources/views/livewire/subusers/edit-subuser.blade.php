@@ -30,7 +30,7 @@
                         wire:click="delete"
                         wire:navigate
                         wire:confirm="本当に削除しますか？"
-                        wire:loading.attr="disabled"
+                        :loading="false"
                         size="base"
                         class="!text-red-500 hover:!font-semibold">
                         {{ __('削除') }}
@@ -38,7 +38,8 @@
                     <flux:button
                         type="submit"
                         size="base"
-                        class="">
+                        :loading="false"
+                        class="hover:!bg-green-100">
                         {{ __('保存') }}
                     </flux:button>
                 </div>

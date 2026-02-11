@@ -99,13 +99,16 @@
                 <flux:button wire:click="quitGame"
                     wire:navigate
                     wire:confirm="ゲームを中止しますか？"
+                    :loading="false"
                     class="w-20 !bg-zinc-50 !text-red-600 !font-medium hover:!font-bold hover:!bg-white">中止</flux:button>
                 <flux:button wire:click="resetScores"
                     wire:navigate
                     wire:confirm="スコアを保存せずにリセットしますか？"
+                    :loading="false"
                     class="w-20 !bg-zinc-50 !text-zinc-600 !font-medium hover:!font-bold hover:!bg-white">リセット</flux:button>
                 <flux:button
                     type="submit"
+                    :loading="false"
                     class="w-20 text-zinc-600 hover:!text-zinc-700 bg-brand-yellow-400 hover:!bg-brand-yellow-700 hover:!border-2 !font-medium hover:!font-bold"
                     variant="primary">保存</flux:button>
             </div>

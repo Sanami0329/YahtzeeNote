@@ -30,6 +30,7 @@
                         :href="route('subusers.show')"
                         wire:navigate
                         size="base"
+                        :loading="false"
                         class="">
                         {{ __('戻る') }}
                     </flux:button>
@@ -37,7 +38,8 @@
                     <flux:button
                         type="submit"
                         size="base"
-                        class="">
+                        :loading="false"
+                        class="hover:!bg-green-100">
                         {{ __('保存') }}
                     </flux:button>
                 </div>

@@ -40,7 +40,7 @@
                             </button>
                         </div>
                         <div class="bg-brand-yellow-400 py-2 text-center">勝者</div>
-                        <div class="bg-brand-yellow-400 py-2 text-left rounded-r-lg">参加メンバー</div>
+                        <div class="bg-brand-yellow-400 py-2 text-left md:text-center rounded-r-lg">参加メンバー</div>
                     </div>
 
                     <!-- ボディ部分 -->
@@ -56,7 +56,7 @@
                             {{ $highestScorePlayer->player->name }}
                             @endif
                         </span>
-                        <span class="whitespace-nowrap flex items-center justify-center bg-white border-y border-r border-brand-yellow-400 py-2 text-center rounded-r-lg">
+                        <span class="whitespace-nowrap flex items-center justify-center bg-white border-y border-r border-brand-yellow-400 py-2 text-left md:text-center rounded-r-lg">
                             {{ $score->play->scores->where('player_id', '!=', auth()->id())->pluck('player.name')->implode('、') }}
                         </span>
                     </div>
