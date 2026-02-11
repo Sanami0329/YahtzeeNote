@@ -73,7 +73,6 @@ class PlayGame extends Component
 
     private function isSameId($array): bool
     {
-
         if ($this->playerArray != array_column($array, 'playerData')) {
             // playerDataの中身が合っていなければエラーを表示
             $this->dispatch('show-error', error: '異なるプレイヤーが検出されました。もう一度やり直してください。');

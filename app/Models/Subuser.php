@@ -18,6 +18,7 @@ class Subuser extends Model
         return $this->belongsTo(User::Class);
     }
 
+    // 1:1
     public function player()
     {
         return $this->hasOne(Player::class);

@@ -20,7 +20,6 @@ class Dashboard extends Component
 
     public function mount()
     {
-        // 
         $player = Player::where('user_id', auth()->id())
             ->whereNull('subuser_id')
             ->first();

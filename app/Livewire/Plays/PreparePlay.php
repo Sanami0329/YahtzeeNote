@@ -13,7 +13,6 @@ class PreparePlay extends Component
     public function mount()
     {
         // createplayでsessionに保存した内容を取り出し、playgameのための情報を再度sessionに保存
-
         $createdPlayers = session('created.players.data');
 
         if (!session()->has('created.players.data')) {
@@ -35,7 +34,7 @@ class PreparePlay extends Component
         ])->first();
 
         if (!$userPlayer) {
-            // 例：ログイン中のユーザー名を使ってその場で作る（bootedが漏れた時の保険）
+            // ログイン中のユーザー名を使ってその場で作る
             $userPlayer = Player::create([
                 'user_id' => auth()->id(),
                 'name' => auth()->user()->name,

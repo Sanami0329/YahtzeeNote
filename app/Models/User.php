@@ -68,6 +68,7 @@ class User extends Authenticatable
         return $this->hasMany(Subuser::class);
     }
 
+    // 1:1
     public function player()
     {
         return $this->hasOne(Player::class);
