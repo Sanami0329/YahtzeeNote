@@ -1,4 +1,5 @@
 # YahtzeeNote
+<img width="70%" height="70%" alt="スクリーンショット 2026-02-11 154912" src="https://github.com/user-attachments/assets/3ee03fc5-f3e6-40da-9d5a-27b5f18c84ed" />
 
 ## 概要 
 YahtzeeNoteは、Yahtzee（ヤッツィー）のスコアを紙要らずで記録できるアプリです。<br>
@@ -9,8 +10,10 @@ YahtzeeNoteは、Yahtzee（ヤッツィー）のスコアを紙要らずで記�
 * 1人～最大6人まで同時プレイが可能
 * レスポンシブ対応（スマホ・タブレット）
 ### URL
+https://yahtzeenote.fly.dev/
 
 ## 使用技術
+
 * PHP
 * Laravel
 * Laravel Authentication(Fortify)
