@@ -1,7 +1,7 @@
 <div class="overflow-x-auto">
-    <form wire:submit="checkBeforeSave" class="h-dvh sm:h-auto mx-auto mt-4 my-6 py-6">
+    <form wire:submit="checkBeforeSave" class="h-auto mx-auto mt-10">
         <!-- table -->
-        <div class="min-w-full mx-auto flex md:justify-center gap-0">
+        <div class="min-w-full mx-auto flex md:justify-center gap-0 mb-12 md:mb-2">
             {{-- score name&description --}}
             <table class="border-collapse border border-zinc-600 font-normal text-zinc-600">
                 {{-- Column Headers --}}
@@ -94,24 +94,19 @@
         </div>
 
         <!-- button -->
-        <div class="md:w-full md:mx-auto fixed md:static bottom-0 right-0 left-0 my-6">
-            <div class="flex justify-center items-center gap-4">
-                <flux:button wire:click="quitGame"
-                    wire:navigate
-                    wire:confirm="ゲームを中止しますか？"
-                    :loading="false"
-                    class="w-20 !bg-zinc-50 !text-red-600 !font-medium hover:!font-bold hover:!bg-white">中止</flux:button>
-                <flux:button wire:click="resetScores"
-                    wire:navigate
-                    wire:confirm="スコアを保存せずにリセットしますか？"
-                    :loading="false"
-                    class="w-20 !bg-zinc-50 !text-zinc-600 !font-medium hover:!font-bold hover:!bg-white">リセット</flux:button>
-                <flux:button
-                    type="submit"
-                    :loading="false"
-                    class="w-20 text-zinc-600 hover:!text-zinc-700 bg-brand-yellow-400 hover:!bg-brand-yellow-700 hover:!border-2 !font-medium hover:!font-bold"
-                    variant="primary">保存</flux:button>
-            </div>
+        <div class="w-fit mx-auto rounded-lg fixed bottom-0 right-0 left-0 md:static my-4 py-2 px-4 flex justify-center items-center gap-4">
+            <flux:button wire:click="quitGame"
+                wire:navigate
+                wire:confirm="ゲームを中止しますか？"
+                :loading="false"
+                class="w-18 md:w-20 !bg-white !text-red-600 hover:!bg-red-500 hover:!text-zinc-50 hover:!font-bold">中止</flux:button>
+            <flux:button wire:click="resetScores"
+                wire:confirm="スコアを保存せずにリセットしますか？"
+                :loading="false"
+                class="w-18 md:w-20 !bg-white hover:!bg-zinc-100 !text-zinc-600 hover:!font-bold">リセット</flux:button>
+            <flux:button type="submit"
+                :loading="false"
+                class="w-18 md:w-20 !bg-green-100 !text-zinc-600 hover:!font-bold">保存</flux:button>
         </div>
     </form>
     <script>

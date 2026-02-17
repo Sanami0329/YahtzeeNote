@@ -58,32 +58,33 @@
 
         <flux:spacer />
 
-        @auth
-        {{-- Play Button --}}
-        <flux:button
-            icon="play"
-            class="hidden sm:flex after:hidden after:content-none mr-4 border
-                   hover:font-bold hover:!bg-brand-yellow-600 dark:hover:!text-zinc-800"
-            :href="route('play.create')"
-            wire:navigate>
-            {{ __('ゲームを始める') }}
-        </flux:button>
-        @endauth
+        <div class="hidden sm:flex">
+            @auth
+            {{-- Play Button --}}
+            <flux:button
+                icon="play"
+                class="mr-4 border hover:font-bold hover:!bg-brand-yellow-600 dark:hover:!text-zinc-800"
+                :href="route('play.create')"
+                wire:navigate>
+                {{ __('ゲームを始める') }}
+            </flux:button>
+            @endauth
+        </div>
 
         <div class="flex items-center">
             @auth
             <x-desktop-user-menu />
             @endauth
-
-            @guest
-            <flux:button
-                :href="route('login')"
-                wire:navigate
-                class="after:hidden after:content-none dark:hover:!bg-zinc-600">
-                {{ __('ログイン') }}
-            </flux:button>
-            @endguest
         </div>
+
+        @guest
+        <flux:button
+            :href="route('login')"
+            wire:navigate
+            class="after:hidden after:content-none dark:hover:!bg-zinc-600">
+            {{ __('ログイン') }}
+        </flux:button>
+        @endguest
     </flux:header>
 
     {{-- Mobile Sidebar --}}
@@ -101,17 +102,17 @@
 
             <flux:sidebar.group :heading="__('Platform')">
 
-                @auth
-                <flux:button
-                    icon="play"
-                    class="after:hidden after:content-none !bg-brand-yellow-400
-                           hover:!bg-brand-yellow-600 hover:!font-bold !text-zinc-900 mb-4"
-                    :href="route('play.create')"
-                    wire:navigate>
-                    {{ __('ゲームを始める') }}
-                </flux:button>
-                @endauth
-
+                <div class="sm:hidden">
+                    @auth
+                    <flux:button
+                        icon="play"
+                        class="!bg-brand-yellow-400 hover:!bg-brand-yellow-600 hover:!font-bold !text-zinc-900 mb-4"
+                        :href="route('play.create')"
+                        wire:navigate>
+                        {{ __('ゲームを始める') }}
+                    </flux:button>
+                    @endauth
+                </div>
 
                 <flux:navbar.item
                     icon="home"

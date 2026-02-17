@@ -26,20 +26,22 @@
                 @enderror
 
                 <div class="flex justify-center my-2 gap-4">
+
                     <flux:button
-                        :href="route('subusers.show')"
+                        wire:click="moveback"
                         wire:navigate
                         size="base"
                         :loading="false"
-                        class="">
+                        class="!bg-white hover:!bg-zinc-100 !text-zinc-600 hover:!font-bold">
                         {{ __('戻る') }}
                     </flux:button>
 
                     <flux:button
                         type="submit"
+                        wire:navigate
                         size="base"
                         :loading="false"
-                        class="hover:!bg-green-100">
+                        class="!bg-green-100 !text-zinc-600 hover:!font-bold">
                         {{ __('保存') }}
                     </flux:button>
                 </div>

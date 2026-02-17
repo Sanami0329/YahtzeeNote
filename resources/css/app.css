@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import '../../vendor/livewire/flux/dist/flux.css';
+@import url(sanitize.css);
 
 @source '../views';
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
@@ -235,7 +236,7 @@ select:focus[data-flux-control] {
     border-color: gray; 
 }
 
-/* === form style reset === */
+/* style reset */
 input,
 textarea,
 select {
@@ -246,5 +247,13 @@ select {
   background-color: transparent;
   color: inherit;
   opacity: 1
+}
+
+button {
+    font-weight: 400;
+}
+
+.min-h-screen {
+    min-height: 100dvh;
 }
 

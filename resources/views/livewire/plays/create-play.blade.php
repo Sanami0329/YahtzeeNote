@@ -17,7 +17,7 @@
                     @if(array_key_exists('playerIsRegistered', $player) && $player['playerIsRegistered'])
                     <div class="flex gap-2 items-center">
                         <flux:input class="pointer-events-none bg-white border border-zinc-400" :value="$player['playerName']" readonly />
-                        <flux:button wire:click="removeInput({{ $i }})" class="w-12 shrink-0 !text-red-400">{{ __('削除') }}</flux:button>
+                        <flux:button wire:click="removeInput({{ $i }})" class="w-12 shrink-0 !bg-white !text-red-600 hover:!bg-zinc-100 hover:!font-semibold">{{ __('削除') }}</flux:button>
                     </div>
                     @else
                     <div class="flex gap-2 items-center">
@@ -28,11 +28,11 @@
                             placeholder="player{{ $i + 1 }}" />
                         <flux:modal.trigger name="select-subuser">
                             <flux:button
-                                class="!w-28 !bg-white hover:!bg-brand-yellow-300 !font-medium !text-xs !text-zinc-500 hover:!text-zinc-700 hover:!font-semibold">
+                                class="!w-28 shrink-0 !bg-white hover:!bg-brand-yellow-300 !font-medium !text-xs !text-zinc-500 hover:!text-zinc-700 hover:!font-semibold">
                                 {{ __('登録メンバーから選択') }}
                             </flux:button>
                         </flux:modal.trigger>
-                        <flux:button wire:click="removeInput({{ $i }})" class="w-10 shrink-0 !text-red-400">{{ __('削除') }}</flux:button>
+                        <flux:button wire:click="removeInput({{ $i }})" class="w-10 shrink-0 !bg-white !text-red-600 hover:!bg-zinc-100 hover:!font-semibold">{{ __('削除') }}</flux:button>
                     </div>
                     @endif
 
@@ -70,14 +70,18 @@
 
                 @if (count($playerArray) < 5)
                     <div class="flex justify-end mb-4">
-                    <flux:button wire:click="addInput({{ $i }})" class="w-10">
+                    <flux:button wire:click="addInput({{ $i }})" class="w-10 shrink-0 !bg-white hover:!bg-zinc-100 !text-zinc-600 hover:!font-bold">
                         {{ __('追加') }}
                     </flux:button>
         </div>
         @endif
 
         {{-- submit button --}}
-        <flux:button type="submit" class="w-48 mx-auto my-4 text-lg font-semibold text-zinc-500 hover:!text-zinc-700 bg-brand-yellow-400 hover:!bg-brand-yellow-600 hover:!border-2 hover:!font-bold" variant="primary">
+        <flux:button
+            type="submit"
+            :loading="false"
+            class="w-48 mx-auto my-4 text-lg font-semibold text-zinc-500 hover:!text-zinc-700 bg-brand-yellow-400 hover:!bg-brand-yellow-600 hover:!border-2 hover:!font-bold"
+            variant="primary">
             {{ __('このメンバーで始める') }}
         </flux:button>
         </form>

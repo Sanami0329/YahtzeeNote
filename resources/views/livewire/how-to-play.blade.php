@@ -5,7 +5,7 @@
 
         <!-- ゲームの準備 -->
         <div class="mb-6">
-            <h2 class="bg-brand-yellow-400 px-2 py-4 font-semibold text-xl text-center">⚀ ゲームの準備 ⚀</h2>
+            <h2 class="bg-brand-yellow-400 p-4 font-semibold text-xl text-center">⚀ ゲームの準備 ⚀</h2>
             <div class="bg-zinc-50 p-4">
                 <div class="mb-4">
                     <h3 class="font-semibold text-lg mb-2">プレイヤー人数</h3>
@@ -29,7 +29,7 @@
 
         <!-- ゲームの進め方 -->
         <div class="mb-6">
-            <h2 class="bg-brand-yellow-400 px-2 py-4 font-semibold text-xl text-center">⚁ ゲームの進め方 ⚁</h2>
+            <h2 class="bg-brand-yellow-400 p-4 font-semibold text-xl text-center">⚁ ゲームの進め方 ⚁</h2>
             <div class="bg-zinc-50 p-4">
                 <p class="mb-2">Yahtzeeは全13ラウンド。<br class="sm:hidden">1ラウンドごとに全プレイヤーが必ず1回プレイします。</p>
                 <ol class="px-6 list-decimal text-left">
@@ -88,7 +88,7 @@
 
         <!-- スコア項目・得点ルール -->
         <div class="mb-6">
-            <h2 class="bg-brand-yellow-400 px-2 py-4 font-semibold text-xl text-center">⚂ スコア項目・得点ルール ⚂</h2>
+            <h2 class="bg-brand-yellow-400 p-4 font-semibold text-xl text-center">⚂ スコア項目・得点ルール ⚂</h2>
             <div class="bg-zinc-50 p-4 overflow-x-auto">
                 <table class="mx-auto border-collapse border border-zinc-600 text-zinc-800">
                     {{-- Column Headers --}}
@@ -139,7 +139,7 @@
 
         <!-- 勝敗について -->
         <div class="mb-6">
-            <h2 class="bg-brand-yellow-400 px-2 py-4 font-semibold text-xl text-center">⚃ 勝敗について ⚃</h2>
+            <h2 class="bg-brand-yellow-400 p-4 font-semibold text-xl text-center">⚃ 勝敗について ⚃</h2>
             <div class="bg-zinc-50 p-4">
                 <ul class="px-6 list-disc text-left">
                     <li>13ラウンド、全プレイヤーが全スコア項目を埋めた時点で終了です。</li>

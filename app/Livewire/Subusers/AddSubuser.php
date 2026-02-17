@@ -36,6 +36,11 @@ class AddSubuser extends Component
         $this->validateOnly('subuserName'); //= $this->subuserName・rules()のキー・wire:model="subuserName"
     }
 
+    public function moveback()
+    {
+        return redirect()->route('subusers.show');
+    }
+
 
     public function save()
     {

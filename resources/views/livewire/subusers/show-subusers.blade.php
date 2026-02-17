@@ -53,7 +53,7 @@
                     wire:click="moveEdit({{ $subuser->id }})"
                     class="flex items-center bg-white hover:bg-brand-yellow-400 border border-brand-yellow-400 hover:border-brand-yellow-600 rounded-lg">
                     <span class="w-16 p-2 whitespace-nowrap text-center">{{ $i + 1 }}</span>
-                    <span class="w-full px-4 py-2 whitespace-nowrap text-center">{{ $subuser->name }}</span>
+                    <span class="w-full px-4 py-2 whitespace-nowrap text-center cursor-pointer">{{ $subuser->name }}</span>
                 </div>
                 @endforeach
             </div>

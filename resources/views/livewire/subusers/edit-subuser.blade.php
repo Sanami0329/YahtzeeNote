@@ -29,17 +29,18 @@
                     <flux:button
                         wire:click="delete"
                         wire:navigate
+                        size="base"
                         wire:confirm="本当に削除しますか？"
                         :loading="false"
-                        size="base"
-                        class="!text-red-500 hover:!font-semibold">
+                        class="!bg-white !text-red-600 hover:!bg-red-500 hover:!text-zinc-50 hover:!font-bold">
                         {{ __('削除') }}
                     </flux:button>
                     <flux:button
                         type="submit"
+                        wire:navigate
                         size="base"
                         :loading="false"
-                        class="hover:!bg-green-100">
+                        class="!bg-green-100 !text-zinc-600 hover:!font-bold">
                         {{ __('保存') }}
                     </flux:button>
                 </div>
