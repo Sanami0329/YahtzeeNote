@@ -25,8 +25,8 @@
                             type="number"
                             size="xs"
                             wire:model.lazy="{{ $field }}"
+                            style="color: var(--color-zinc-600); text-align: center;"
                             class="!w-14 bg-white border border-zinc-600"
-                            style="text-align: center;"
                             max="{{ $this->scoreConfig[$field]['max'] }}"
                             min="0" />
                         <flux:button
@@ -68,8 +68,8 @@
                             type="number"
                             size="xs"
                             wire:model.lazy="{{ $field }}"
+                            style="color: var(--color-zinc-600); text-align: center;"
                             class="!w-14 bg-white border border-zinc-600"
-                            style="text-align: center;"
                             max="{{ $this->scoreConfig[$field]['max'] }}"
                             min="0" />
                         <flux:button
