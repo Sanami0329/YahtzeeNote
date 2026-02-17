@@ -10,7 +10,7 @@
             <div class="flex flex-col items-center gap-6">
 
                 <flux:card class="max-w-2xl h-12 flex justify-between items-center gap-20 p-6 bg-brand-yellow-200 rounded-lg">
-                    <div class="w-24 text-left text-base font-semibold text-zinc-600">{{ __('総プレイ数') }}</div>
+                    <div class="w-24 text-left text-base font-semibold text-zinc-600 pointer-events-none">{{ __('総プレイ数') }}</div>
                     <div class="w-16 text-right text-base text-zinc-500">{{ $playCount }}</div>
                 </flux:card>
                 <a href="{{ route('score.history') }}" class="block">

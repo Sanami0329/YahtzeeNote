@@ -11,7 +11,7 @@
             </ol>
         </nav>
 
-        <h1 class="m-4 font-semibold text-lg text-center">スコア履歴</h1>
+        <h1 class="m-4 font-semibold !text-xl text-center">スコア履歴</h1>
 
         <div class="min-w-full bg-brand-yellow-200 p-4">
             <!-- テーブル全体のコンテナ -->

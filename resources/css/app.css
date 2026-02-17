@@ -1,6 +1,6 @@
+@import url(normalize.css);
 @import 'tailwindcss';
 @import '../../vendor/livewire/flux/dist/flux.css';
-@import url(sanitize.css);
 
 @source '../views';
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
@@ -11,7 +11,7 @@
 
 @theme {
     --font-sans: 'Open Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-    --font-heading: 'Open Sans', var(--font-sans);
+    --font-heading: font-family: var(--font-sans);
 
     /* Brand red color */
     --color-brand-red-100: #F9E2E5;
@@ -75,10 +75,6 @@
 @layer base {
     html, body {
         font-family: var(--font-sans);
-    }
-
-    h1, h2, h3, h4, h5, h6, p {
-        font-family: var(--font-heading);
     }
 
     /* Remove spinner for number inputs (Chrome, Safari, Edge, Firefox) */
@@ -175,6 +171,7 @@
     .hover\:border-brand-yellow-700:hover { border-color: var(--color-brand-yellow-700); }
     .hover\:border-brand-yellow-800:hover { border-color: var(--color-brand-yellow-800); }
     .hover\:border-brand-yellow-900:hover { border-color: var(--color-brand-yellow-900);}
+
 }
 
 @layer utilities {
@@ -209,6 +206,18 @@
     .text-brand-yellow-700 { color: var(--color-brand-yellow-700); }
     .text-brand-yellow-800 { color: var(--color-brand-yellow-800); }
     .text-brand-yellow-900 { color: var(--color-brand-yellow-900); }
+
+    input,
+    textarea,
+    select {  
+        appearance: none;
+        -webkit-appearance: none;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        opacity: 1;
+    }
+
 }
 
 [data-flux-field]:not(ui-radio, ui-checkbox) {
@@ -225,35 +234,35 @@ select:focus[data-flux-control] {
     @apply outline-hidden ring-2 ring-accent ring-offset-2 ring-offset-accent-foreground;
 }
 
-/* \[:where(&)\]:size-4 {
-    @apply size-4;
-} */
 
 /* flux input */
-
 [data-flux-input] {
     border-width: 2px;
     border-color: gray; 
 }
 
-/* style reset */
-input,
-textarea,
-select {
-  appearance: none;
-  -webkit-appearance: none;
-  border: none;
-  outline: none;
-  background-color: transparent;
-  color: inherit;
-  opacity: 1
+.min-h-screen {
+    min-height: 100dvh;
+}
+
+html {
+    -webkit-text-size-adjust: 100%; /* iOS/Safari での自動フォントサイズ調整を無効化 */
+    -webkit-font-smoothing: antialiased; /* フォントのアンチエイリアスを有効にして文字を滑らかにする */
+    text-rendering: optimizeLegibility; /* 文字の可読性を優先してレンダリング品質を向上 */
+}
+
+span,
+p,
+th,
+td,
+li {
+    letter-spacing: 0;                /* 文字間隔をデフォルトに戻す */
+    font-kerning: normal;             /* カーニング（文字詰め）を有効化 */
+    font-feature-settings: "kern";    /* OpenType のカーニング機能を明示的に指定 */
 }
 
 button {
     font-weight: 400;
-}
-
-.min-h-screen {
-    min-height: 100dvh;
+    font-size: 14px !important;
 }
 

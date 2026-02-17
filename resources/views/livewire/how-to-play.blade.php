@@ -1,7 +1,7 @@
 <div class="mx-auto px-4 py-10 bg-brand-yellow-200 text-zinc-700 text-left">
     <div class="w-full sm:w-96 sm:w-lg sm:mx-auto">
 
-        <h1 class="block mx-auto sm:mx-0 my-8 text-xl sm:text-2xl text-center font-bold">Yahtzee（ヤッツィー）の遊び方</h1>
+        <h1 class="block mx-auto sm:mx-0 !text-xl sm:!text-2xl text-center font-bold">Yahtzee（ヤッツィー）の遊び方</h1>
 
         <!-- ゲームの準備 -->
         <div class="mb-6">

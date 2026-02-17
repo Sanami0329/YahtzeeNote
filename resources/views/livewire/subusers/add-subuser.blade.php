@@ -16,11 +16,11 @@
             </ol>
         </nav>
 
-        <h1 class="m-4 font-semibold text-lg text-center">メンバー追加</h1>
+        <h1 class="m-4 font-semibold !text-xl text-center">メンバー追加</h1>
 
         <div class="min-w-full bg-brand-yellow-200 p-6 p-4">
             <form wire:submit.prevent="save" class="flex flex-col gap-4">
-                <flux:input wire:model.lazy="subuserName" class="bg-white border border-zinc-400 !text-zinc-600 !text-semibold" />
+                <flux:input wire:model.lazy="subuserName" style="color: var(--color-zinc-600) !important;" class="bg-white border border-zinc-400 !text-zinc-600 !text-semibold" />
                 @error('subuserName')
                 <p class="text-red-500 text-sm">{{ $message }}</p>
                 @enderror
@@ -38,7 +38,6 @@
 
                     <flux:button
                         type="submit"
-                        wire:navigate
                         size="base"
                         :loading="false"
                         class="!bg-green-100 !text-zinc-600 hover:!font-bold">

@@ -7,7 +7,7 @@
                 {{-- Column Headers --}}
                 <thead>
                     <tr class="h-10 bg-white">
-                        <th class="min-w-48 px-4 border border-zinc-600 text-left font-medium">{{ __('スコア項目') }}</th>
+                        <th class="min-w-48 px-4 border border-zinc-600 text-center font-medium">{{ __('スコア項目') }}</th>
                         <th class="min-w-66 px-4 border border-zinc-600 text-center font-normal">{{ __('得点ルール') }}</th>
                     </tr>
                 </thead>

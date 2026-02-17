@@ -26,13 +26,13 @@
 
         @endforeach
 
-        <h1 class="m-4 font-semibold text-lg text-center">登録メンバー</h1>
+        <h1 class="m-4 font-semibold !text-xl text-center">登録メンバー</h1>
 
         <div class="flex justify-end mb-4">
             <flux:button
                 :href="route('add.subuser')"
                 wire:navigate
-                class="w-32 !bg-white hover:!bg-brand-yellow-400 !border hover:!border-brand-yellow-600 hover:!font-bold !text-zinc-600 text-center">
+                class="w-fit px-6 !bg-white hover:!bg-brand-yellow-400 !border hover:!border-brand-yellow-600 hover:!font-bold !text-zinc-600 text-center">
                 {{ __('＋  メンバー追加') }}
             </flux:button>
         </div>
