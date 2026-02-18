@@ -143,7 +143,7 @@
             <div class="bg-zinc-50 p-4">
                 <ul class="pl-6 list-disc text-left">
                     <li>13ラウンド、全プレイヤーが全スコア項目を埋めた時点で終了です。</li>
-                    <li>もっとも得点の高いプレイヤーが勝者となります。</li>
+                    <li>最も得点の高いプレイヤーが勝者となります。</li>
                 </ul>
             </div>
         </div>

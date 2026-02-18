@@ -21,41 +21,38 @@
         container
         class="fixed w-full border-b border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 pt-2 lg:pt-0">
 
-        <flux:sidebar.toggle class="lg:hidden mr-2" icon="bars-2" inset="left" />
+        <flux:sidebar.toggle class="lg:hidden !mr-2" icon="bars-2" inset="left" />
 
         <x-app-logo href="{{ route('top') }}" wire:navigate />
 
         {{-- Desktop Navbar --}}
         <flux:navbar class="-mb-px max-lg:hidden border-b-0">
 
-            @auth
-            <flux:navbar.item
-                icon="home"
-                class="after:hidden after:content-none"
-                :href="route('dashboard')"
-                wire:navigate>
-                {{ __('ホーム') }}
-            </flux:navbar.item>
-            @endauth
-
             @guest
-            <flux:navbar.item
-                icon="home"
-                class="after:hidden after:content-none"
-                :href="route('top')"
-                wire:navigate>
+            <flux:navbar.item class="after:hidden after:content-none" :href="route('top')" wire:navigate>
+                <x-slot:icon>
+                    <x-icons.home class="w-5 h-5" />
+                </x-slot:icon>
                 {{ __('ホーム') }}
             </flux:navbar.item>
             @endguest
 
-            <flux:navbar.item
-                icon="book-open-text"
-                class="after:hidden after:content-none"
-                :href="route('howtoplay')"
-                :current="request()->routeIs('howtoplay')"
-                wire:navigate>
+            @auth
+            <flux:navbar.item class="after:hidden after:content-none" :href="route('dashboard')" wire:navigate>
+                <x-slot:icon>
+                    <x-icons.notebook class="w-5 h-5" />
+                </x-slot:icon>
+                {{ __('マイノート') }}
+            </flux:navbar.item>
+            @endauth
+
+            <flux:navbar.item class="after:hidden after:content-none" :href="route('howtoplay')" wire:navigate>
+                <x-slot:icon>
+                    <x-icons.question-mark class="w-5 h-5" />
+                </x-slot:icon>
                 {{ __('遊び方') }}
             </flux:navbar.item>
+
         </flux:navbar>
 
         <flux:spacer />
@@ -116,21 +113,39 @@
                     @endauth
                 </div>
 
+
+                <flux:navbar.item
+                    icon="home"
+                    class="after:hidden after:content-none mb-4"
+                    :href="route('top')"
+                    wire:navigate>
+                    <x-slot:icon>
+                        <x-icons.home class="w-5 h-5" />
+                    </x-slot:icon>
+                    {{ __('ホーム') }}
+                </flux:navbar.item>
+
+                @auth
                 <flux:navbar.item
                     icon="home"
                     class="after:hidden after:content-none mb-4"
                     :href="route('dashboard')"
-                    :current="request()->routeIs('dashboard')"
                     wire:navigate>
-                    Home
+                    <x-slot:icon>
+                        <x-icons.notebook class="w-5 h-5" />
+                    </x-slot:icon>
+                    {{ __('マイノート') }}
                 </flux:navbar.item>
+                @endauth
 
                 <flux:navbar.item
                     icon="book-open-text"
                     class="after:hidden after:content-none mb-4"
                     :href="route('howtoplay')"
-                    :current="request()->routeIs('howtoplay')"
                     wire:navigate>
+                    <x-slot:icon>
+                        <x-icons.question-mark class="w-5 h-5" />
+                    </x-slot:icon>
                     {{ __('遊び方') }}
                 </flux:navbar.item>
             </flux:sidebar.group>

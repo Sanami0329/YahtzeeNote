@@ -41,17 +41,18 @@
 
     <!-- Yahtzeeとは -->
     <section id="practice-areas" class="py-16 bg-white">
-        <div class="container mx-auto px-2 lg:px-16">
+        <div class="container mx-auto px-0 lg:px-16">
             <div class="text-center mb-10">
-                <h2 class="text-2xl lg:text-3xl font-bold">Yahtzee（ヤッツィー）とは？</h2>
+                <h2 class="text-2xl lg:text-3xl font-bold">Yahtzee(ヤッツィー)とは？</h2>
             </div>
 
             <div class="flex flex-col items-center">
-                <p class="text-center text-base lg:text-base text-sm mb-8">
+                <p class="text-center text-base lg:text-base text-sm mb-6">
                     Yahtzeeとは、5つのサイコロを振って決められた<br class="sm:hidden">組み合わせ（役）を作り、得点を競うゲームです。<br>
-                    13種類のスコア項目をすべて埋めた時点で、<br class="sm:hidden">合計点が最も高い人が勝ちとなります。<br>
-                    ルールは簡単！子どもから大人まで気軽に楽しむことができます。
+                    13種類のスコア項目をすべて埋めた時点で、<br class="sm:hidden">最も得点の高い人が勝ちとなります。<br>
                 </p>
+
+                <p class="mb-2 text-center text-sm">ルールは簡単！<br class="sm:hidden">子どもから大人まで気軽に楽しむことができます。</p>
 
                 <flux:link class="mx-auto !font-normal text-sm text-zinc-600 hover:text-zinc-800 mb-8" :href="route('howtoplay')" wire:navigate>
                     {{ __('遊び方・ルールはこちら') }}
@@ -74,7 +75,7 @@
 
                 <div class="bg-white/50 flex flex-col items-center lg:px-8 lg:py-16 py-4 text-center text-center">
 
-                    <h2 class="lg:w-72 mb-6 lg:mb-10 text-2xl lg:text-3xl font-bold">YahtzeeNoteの特徴</h2>
+                    <h2 class="lg:w-72 mb-4 lg:mb-8 text-2xl lg:text-3xl font-bold">YahtzeeNoteの特徴</h2>
 
                     <ul class="lg:w-72 space-y-2 text-center pl-6 gap-2 text-left list-disc text-base lg:text-xl">
                         <li>
