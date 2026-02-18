@@ -7,8 +7,8 @@
                 {{-- Column Headers --}}
                 <thead>
                     <tr class="h-10 bg-white">
-                        <th class="min-w-48 px-4 border border-zinc-600 text-center font-medium">{{ __('スコア項目') }}</th>
-                        <th class="min-w-66 px-4 border border-zinc-600 text-center font-normal">{{ __('得点ルール') }}</th>
+                        <th class="w-fit whitespace-nowrap px-4 border border-zinc-600 text-center font-medium">{{ __('スコア項目') }}</th>
+                        <th class="w-fit whitespace-nowrap px-4 border border-zinc-600 text-center font-normal">{{ __('得点ルール') }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -22,13 +22,13 @@
                     ['name' => 'シックス', 'eng_name' => 'Sixes', 'dice' => '⚅', 'desc' => '6の目の合計', 'eng_desc' => 'Count and add only Sixes'],
                     ] as $row)
                     <tr class="h-10 bg-brand-red-100">
-                        <th class="min-w-48 border border-zinc-600">
+                        <th class="w-fit whitespace-nowrap border border-zinc-600">
                             <div class="flex items-center px-4 gap-2">
                                 <span class="w-16 overflow-hidden text-left font-medium">{{ __($row['name']) }}</span>
                                 <span class="text-3xl font-thin">{{ $row['dice'] }}</span>
                             </div>
                         </th>
-                        <td class="min-w-66 border border-zinc-600 px-4 font-normal">{{ __($row['desc']) }}</td>
+                        <td class="w-fit whitespace-nowrap border border-zinc-600 px-4 font-normal">{{ __($row['desc']) }}</td>
                     </tr>
                     @endforeach
 
@@ -39,8 +39,8 @@
                     ['name' => '上段合計', 'eng_name' => 'UPPER TOTAL', 'desc' => '', 'eng_desc' => ''],
                     ] as $item)
                     <tr class="h-10 bg-brand-red-300">
-                        <th class="min-w-48 px-4 border border-zinc-600 text-left font-semibold">{{ __($item['name']) }}</th>
-                        <td class="min-w-66 px-4 border border-zinc-600 font-normal">{{ __($item['desc']) }}</td>
+                        <th class="w-fit whitespace-nowrap px-4 border border-zinc-600 text-left font-semibold">{{ __($item['name']) }}</th>
+                        <td class="w-fit whitespace-nowrap px-4 border border-zinc-600 font-normal">{{ __($item['desc']) }}</td>
                     </tr>
                     @endforeach
 
@@ -56,27 +56,27 @@
                     ['name' => 'チャンス', 'eng_name' => 'Chance', 'desc' => '全部の目の合計', 'eng_desc' => 'Total of all 5 dice'],
                     ] as $row)
                     <tr class="bg-brand-blue-100 h-10">
-                        <th class="min-w-48 px-4 border border-zinc-600 text-left font-medium">{{ $row['name'] }}</th>
-                        <td class="min-w-66 px-4 border border-zinc-600 font-normal">{{ __($row['desc']) }}</td>
+                        <th class="w-fit whitespace-nowrap px-4 border border-zinc-600 text-left font-medium">{{ $row['name'] }}</th>
+                        <td class="w-fit whitespace-nowrap px-4 border border-zinc-600 font-normal">{{ __($row['desc']) }}</td>
                     </tr>
                     @endforeach
 
                     {{-- Yahtzee Bonus --}}
                     <tr class="h-16 bg-brand-blue-100">
-                        <th class="min-w-48 px-4 border border-zinc-600 text-left font-medium">{{ __('YAHTZEEボーナス') }}</th>
-                        <td class="min-w-66 px-4 border border-zinc-600 font-normal">{{ __('2回目以降は1回100点') }}</td>
+                        <th class="w-fit whitespace-nowrap px-4 border border-zinc-600 text-left font-medium">{{ __('YAHTZEEボーナス') }}</th>
+                        <td class="w-fit whitespace-nowrap px-4 border border-zinc-600 font-normal">{{ __('2回目以降は1回100点') }}</td>
                     </tr>
 
                     {{-- Lower Total --}}
                     <tr class="h-10 bg-brand-blue-300">
-                        <th class="min-w-48 px-4 border border-zinc-600 text-left font-semibold">{{ __('下段合計') }}</th>
-                        <td class="min-w-66 px-4 border border-zinc-600 font-normal"></td>
+                        <th class="w-fit whitespace-nowrap px-4 border border-zinc-600 text-left font-semibold">{{ __('下段合計') }}</th>
+                        <td class="w-fit whitespace-nowrap px-4 border border-zinc-600 font-normal"></td>
                     </tr>
 
                     {{-- Grand Total --}}
                     <tr class="h-14 bg-brand-yellow-400 border-t-4 border-double border-zinc-600">
-                        <th class="min-w-48 p-4 border border-zinc-600 text-left font-bold text-lg">{{ __('合計') }}</th>
-                        <td class="min-w-66 p-4 border border-zinc-600 font-normal">{{ __('上段合計＋下段合計') }}</td>
+                        <th class="w-fit whitespace-nowrap p-4 border border-zinc-600 text-left font-bold text-lg">{{ __('合計') }}</th>
+                        <td class="w-fit whitespace-nowrap p-4 border border-zinc-600 font-normal">{{ __('上段合計＋下段合計') }}</td>
                     </tr>
                 </tbody>
             </table>

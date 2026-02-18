@@ -246,7 +246,7 @@ select:focus[data-flux-control] {
 }
 
 html {
-    -webkit-text-size-adjust: 100%; /* iOS/Safari での自動フォントサイズ調整を無効化 */
+    -webkit-text-size-adjust: 100%; /* Safari での自動フォントサイズ調整を無効化 */
     -webkit-font-smoothing: antialiased; /* フォントのアンチエイリアスを有効にして文字を滑らかにする */
     text-rendering: optimizeLegibility; /* 文字の可読性を優先してレンダリング品質を向上 */
 }
@@ -265,4 +265,9 @@ button {
     font-weight: 400;
     font-size: 14px !important;
 }
+
+*, *::before, *::after {
+    box-sizing: border-box; /* padding / border を width に含める */
+  }
+  
 

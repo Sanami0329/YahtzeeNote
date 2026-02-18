@@ -117,7 +117,7 @@
                         ] as $i => $row)
                         <tr class="bg-white text-left">
                             <th class="px-2 border border-zinc-400 !font-normal text-center">{{ $i + 1 }}</th>
-                            <th class="min-w-48 px-4 border border-zinc-400 !font-normal">{{ $row['name'] }}</th>
+                            <th class="min-w-48 whitespace-nowrap px-4 border border-zinc-400 !font-normal">{{ $row['name'] }}</th>
                             <td class="min-w-56 px-4 border border-zinc-400 !font-normal">{{ __($row['desc']) }}</td>
                         </tr>
                         @endforeach
@@ -142,7 +142,7 @@
             <h2 class="bg-brand-yellow-400 p-4 font-semibold text-xl text-center">⚃ 勝敗について ⚃</h2>
             <div class="bg-zinc-50 p-4">
                 <ul class="pl-6 list-disc text-left">
-                    <li>13ラウンド、全プレイヤーが全スコア項目を埋めた時点で終了です。</li>
+                    <li class="whitespace-nowrap">13ラウンド、全プレイヤーが全スコア項目を埋めた時点で終了です。</li>
                     <li>最も得点の高いプレイヤーが勝者となります。</li>
                 </ul>
             </div>
