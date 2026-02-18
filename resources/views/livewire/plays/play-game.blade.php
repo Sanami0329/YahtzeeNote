@@ -24,7 +24,7 @@
                     <tr class="h-10 bg-brand-red-100">
                         <th class="min-w-48 border border-zinc-600">
                             <div class="flex items-center px-4 gap-2">
-                                <span class="w-20 text-left font-medium">{{ __($row['name']) }}</span>
+                                <span class="w-22 overflow-hidden text-left font-medium">{{ __($row['name']) }}</span>
                                 <span class="text-3xl font-thin">{{ $row['dice'] }}</span>
                             </div>
                         </th>

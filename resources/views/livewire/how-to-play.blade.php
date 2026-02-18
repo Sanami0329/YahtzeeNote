@@ -35,14 +35,14 @@
                 <ol class="px-6 list-decimal text-left">
                     <li class="mb-4">
                         <h3 class="font-semibold text-lg mb-2">サイコロを振る</h3>
-                        <ul class="px-6 list-disc">
+                        <ul class="pl-6 list-disc">
                             <li>5つのサイコロを同時に振ります。</li>
                         </ul>
                     </li>
 
                     <li class="mb-4">
                         <h3 class="font-semibold text-lg mb-2">サイコロを振り直す（2回まで）</h3>
-                        <ul class="px-6 list-disc">
+                        <ul class="pl-6 list-disc">
                             <li>振って出たサイコロの目が気に入らない場合は、最大2回振り直しができます。（1ターン合計3回まで）</li>
                             <li>好きなサイコロを残し、気に入らないサイコロだけ振り直すことができます。</li>
                         </ul>
@@ -51,7 +51,7 @@
                     <li class="mb-4">
                         <h3 class="font-semibold text-lg mb-2">スコア項目を選ぶ</h3>
                         <p class="mb-2">1ターンごとに必ず1つスコア項目を埋めます。</p>
-                        <ul class="px-6 list-disc">
+                        <ul class="pl-6 list-disc">
                             <li>
                                 振ったサイコロの目を見て、どのスコア項目に得点を入れるか決めます。
                             </li>
@@ -141,7 +141,7 @@
         <div class="mb-6">
             <h2 class="bg-brand-yellow-400 p-4 font-semibold text-xl text-center">⚃ 勝敗について ⚃</h2>
             <div class="bg-zinc-50 p-4">
-                <ul class="px-6 list-disc text-left">
+                <ul class="pl-6 list-disc text-left">
                     <li>13ラウンド、全プレイヤーが全スコア項目を埋めた時点で終了です。</li>
                     <li>もっとも得点の高いプレイヤーが勝者となります。</li>
                 </ul>
