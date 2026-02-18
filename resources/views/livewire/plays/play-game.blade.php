@@ -14,17 +14,17 @@
                 <tbody>
                     {{-- Upper Section --}}
                     @foreach([
-                    ['name' => 'エース (1)', 'eng_name' => 'Ones', 'dice' => '⚀', 'desc' => '1の目の合計', 'eng_desc' => 'Count and add only Ones'],
-                    ['name' => 'ツー (2)', 'eng_name' => 'Twos', 'dice' => '⚁', 'desc' => '2の目の合計', 'eng_desc' => 'Count and add only Twos'],
-                    ['name' => 'スリー (3)', 'eng_name' => 'Threes', 'dice' => '⚂', 'desc' => '3の目の合計', 'eng_desc' => 'Count and add only Threes'],
-                    ['name' => 'フォー (4)', 'eng_name' => 'Fours', 'dice' => '⚃', 'desc' => '4の目の合計', 'eng_desc' => 'Count and add only Fours'],
-                    ['name' => 'ファイブ (5)', 'eng_name' => 'Fives', 'dice' => '⚄', 'desc' => '5の目の合計', 'eng_desc' => 'Count and add only Fives'],
-                    ['name' => 'シックス (6)', 'eng_name' => 'Sixes', 'dice' => '⚅', 'desc' => '6の目の合計', 'eng_desc' => 'Count and add only Sixes'],
+                    ['name' => 'エース', 'eng_name' => 'Ones', 'dice' => '⚀', 'desc' => '1の目の合計', 'eng_desc' => 'Count and add only Ones'],
+                    ['name' => 'ツー', 'eng_name' => 'Twos', 'dice' => '⚁', 'desc' => '2の目の合計', 'eng_desc' => 'Count and add only Twos'],
+                    ['name' => 'スリー', 'eng_name' => 'Threes', 'dice' => '⚂', 'desc' => '3の目の合計', 'eng_desc' => 'Count and add only Threes'],
+                    ['name' => 'フォー', 'eng_name' => 'Fours', 'dice' => '⚃', 'desc' => '4の目の合計', 'eng_desc' => 'Count and add only Fours'],
+                    ['name' => 'ファイブ', 'eng_name' => 'Fives', 'dice' => '⚄', 'desc' => '5の目の合計', 'eng_desc' => 'Count and add only Fives'],
+                    ['name' => 'シックス', 'eng_name' => 'Sixes', 'dice' => '⚅', 'desc' => '6の目の合計', 'eng_desc' => 'Count and add only Sixes'],
                     ] as $row)
                     <tr class="h-10 bg-brand-red-100">
                         <th class="min-w-48 border border-zinc-600">
                             <div class="flex items-center px-4 gap-2">
-                                <span class="w-22 overflow-hidden text-left font-medium">{{ __($row['name']) }}</span>
+                                <span class="w-16 overflow-hidden text-left font-medium">{{ __($row['name']) }}</span>
                                 <span class="text-3xl font-thin">{{ $row['dice'] }}</span>
                             </div>
                         </th>
