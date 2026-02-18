@@ -1,5 +1,5 @@
 # YahtzeeNote
-<img width="70%" height="70%" alt="スクリーンショット 2026-02-11 154912" src="https://github.com/user-attachments/assets/3ee03fc5-f3e6-40da-9d5a-27b5f18c84ed" />
+<img alt="スクリーンショット 2026-02-11 154912" src="https://github.com/user-attachments/assets/3ee03fc5-f3e6-40da-9d5a-27b5f18c84ed" />
 
 ## 概要 
 YahtzeeNoteは、Yahtzee（ヤッツィー）のスコアを紙要らずで記録できるアプリです。<br>
@@ -46,6 +46,9 @@ https://yahtzeenote.fly.dev/
 ## 操作画面
 
 https://github.com/user-attachments/assets/5689c1c6-2992-433b-b50c-35ec11b38138
+
+Icons by Lucide (MIT License)<br>
+Photo by MolnarSzabolcsErdely on Pixabay
 
 
 
